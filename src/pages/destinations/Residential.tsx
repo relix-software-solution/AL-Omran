@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useTranslation } from "react-i18next";
 
 const textFieldSx = {
   "& .MuiOutlinedInput-root": {
@@ -36,65 +37,43 @@ const textFieldSx = {
 };
 
 const Residential = () => {
+  /* -------------------------------------------------------------------------- */
+  /*                                 Translation                                */
+  /* -------------------------------------------------------------------------- */
+  const [t] = useTranslation();
   return (
     <>
-      <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
-        <Typography
-          variant="h2"
-          gutterBottom
-          sx={{
-            textAlign: "center",
-            mb: 5,
-            color: "#193a51",
-            fontSize: { xs: "32px", md: "72px" },
-          }}
-        >
-          Reserve Your Forever Home
-        </Typography>
-        <Typography
-          variant="h4"
-          gutterBottom
-          sx={{
-            textAlign: "center",
-            mb: 5,
-            color: "#193a51",
-            fontSize: { xs: "20px", md: "30px" },
-          }}
-        >
-          - Reserve Your Apartment -
-        </Typography>
-
-        <Box sx={{ width: { xs: "100%", md: "60%" }, margin: "0 auto 30px" }}>
-          <TextField
-            label="Name"
-            placeholder="Enter your name.."
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircleIcon sx={{ color: "#193a51" }} />
-                </InputAdornment>
-              ),
-            }}
-            sx={textFieldSx}
-          />
-        </Box>
-        <Box
-          sx={{
-            width: { xs: "100%", md: "60%" },
-            margin: "auto",
-            display: { xs: "block", md: "flex" },
-            justifyContent: "space-between",
-          }}
-        >
-          <Box
+      <div dir={t("dir")}>
+        <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
+          <Typography
+            variant="h2"
+            gutterBottom
             sx={{
-              width: { xs: "100%", md: "48%" },
-              marginBottom: { xs: "30px", md: "0" },
+              textAlign: "center",
+              mb: 5,
+              color: "#193a51",
+              fontSize: { xs: "32px", md: "72px" },
             }}
           >
+            {t("dest7")}
+          </Typography>
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{
+              textAlign: "center",
+              mb: 5,
+              color: "#193a51",
+              fontSize: { xs: "20px", md: "30px" },
+            }}
+          >
+            - {t("dest8")} -
+          </Typography>
+
+          <Box sx={{ width: { xs: "100%", md: "60%" }, margin: "0 auto 30px" }}>
             <TextField
-              label="ُPhone Number"
-              placeholder="Enter your phone number.."
+              label={t("contact13")}
+              placeholder={t("contact14")}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -105,35 +84,63 @@ const Residential = () => {
               sx={textFieldSx}
             />
           </Box>
-          <Box sx={{ width: { xs: "100%", md: "48%" } }}>
-            <TextField
-              label="ُEmail"
-              placeholder="Enter your email.."
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircleIcon sx={{ color: "#193a51" }} />
-                  </InputAdornment>
-                ),
+          <Box
+            sx={{
+              width: { xs: "100%", md: "60%" },
+              margin: "auto",
+              display: { xs: "block", md: "flex" },
+              justifyContent: "space-between",
+            }}
+          >
+            <Box
+              sx={{
+                width: { xs: "100%", md: "48%" },
+                marginBottom: { xs: "30px", md: "0" },
               }}
-              sx={textFieldSx}
-            />
+            >
+              <TextField
+                label={t("contact15")}
+                placeholder={t("contact16")}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircleIcon sx={{ color: "#193a51" }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={textFieldSx}
+              />
+            </Box>
+            <Box sx={{ width: { xs: "100%", md: "48%" } }}>
+              <TextField
+                label={t("contact8")}
+                placeholder={t("contact9")}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircleIcon sx={{ color: "#193a51" }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={textFieldSx}
+              />
+            </Box>
           </Box>
+          <Button
+            sx={{
+              width: { xs: "140px", md: "200px" },
+              padding: "10px 20px",
+              fontSize: "16px",
+              background: "#c09660",
+              color: "#fff",
+              borderRadius: "40px",
+              margin: "30px auto 10px",
+            }}
+          >
+            {t("contact12")}
+          </Button>
         </Box>
-        <Button
-          sx={{
-            width: { xs: "140px", md: "200px" },
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "#c09660",
-            color: "#fff",
-            borderRadius: "40px",
-            margin: "30px auto 10px",
-          }}
-        >
-          Submit
-        </Button>
-      </Box>
+      </div>
     </>
   );
 };

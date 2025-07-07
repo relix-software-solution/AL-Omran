@@ -76,7 +76,7 @@ const Footer = () => {
                   component="h5"
                   sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
                 >
-                  {t("services")}
+                  {t("aboutUs")}
                 </Typography>
                 <Typography
                   component="h5"

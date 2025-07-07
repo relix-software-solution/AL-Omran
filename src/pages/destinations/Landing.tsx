@@ -51,7 +51,6 @@ const Landing = () => {
             height: "50%",
             background:
               "linear-gradient(to top, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0) 100%)",
-
             zIndex: 1,
           }}
         />
