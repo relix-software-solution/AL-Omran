@@ -13,6 +13,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import image1 from "../../assets/image/05.webp";
 import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
 
 const Contact: React.FC = () => {
   const theme = useTheme();
@@ -21,8 +22,9 @@ const Contact: React.FC = () => {
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
-  const [t] = useTranslation();
-
+  const [t, i18n] = useTranslation();
+  const theme1 = useTheme();
+  const isMdUp = useMediaQuery(theme1.breakpoints.up("md"));
   return (
     <div dir={t("dir")} id="contact">
       {" "}
@@ -52,6 +54,7 @@ const Contact: React.FC = () => {
         />
 
         {/* الفورم مع Blur */}
+
         <Box
           sx={{
             position: "relative",
@@ -66,99 +69,119 @@ const Contact: React.FC = () => {
             backgroundColor: "rgba(19, 90, 136, 0.54)",
           }}
         >
-          <Container
-            sx={{ maxWidth: "90%", color: "white", py: { xs: 4, md: 0 } }}
+          {" "}
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+              y: isMdUp ? 0 : 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
           >
-            <Typography
-              variant="h4"
-              fontWeight="bold"
-              gutterBottom
-              sx={{ mb: 5 }}
+            <Container
+              sx={{ maxWidth: "90%", color: "white", py: { xs: 4, md: 0 } }}
             >
-              {t("contact1")}
-            </Typography>
-            <Typography variant="body1" gutterBottom sx={{ mb: 4 }}>
-              {t("contact2")} <b> {t("contact3")}</b>
-            </Typography>
+              <Typography
+                variant="h4"
+                fontWeight="bold"
+                gutterBottom
+                sx={{ mb: 5 }}
+              >
+                {t("contact1")}
+              </Typography>
+              <Typography variant="body1" gutterBottom sx={{ mb: 4 }}>
+                {t("contact2")} <b> {t("contact3")}</b>
+              </Typography>
 
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 4, // زودت المسافة بين الحقول بشكل واضح
-                mt: 3,
-              }}
-            >
-              {/* الاسم الأول والاسم الأخير */}
               <Box
+                component="form"
                 sx={{
                   display: "flex",
-                  flexDirection: isMobile ? "column" : "row",
-                  gap: 4, // زودت المسافة بين أول و آخر اسم
+                  flexDirection: "column",
+                  gap: 4, // زودت المسافة بين الحقول بشكل واضح
+                  mt: 3,
                 }}
               >
+                {/* الاسم الأول والاسم الأخير */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: isMobile ? "column" : "row",
+                    gap: 4, // زودت المسافة بين أول و آخر اسم
+                  }}
+                >
+                  <TextField
+                    label={t("contact4")}
+                    placeholder={t("contact6")}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircleIcon sx={{ color: "#eadccc" }} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <TextField
+                    label={t("contact5")}
+                    placeholder={t("contact7")}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircleIcon sx={{ color: "#eadccc" }} />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Box>
+
+                {/* البريد الإلكتروني */}
                 <TextField
-                  label={t("contact4")}
-                  placeholder={t("contact6")}
+                  label={t("contact8")}
+                  placeholder={t("contact9")}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#eadccc" }} />
+                        <EmailIcon sx={{ color: "#eadccc" }} />
                       </InputAdornment>
                     ),
                   }}
                 />
+
+                {/* الرسالة */}
                 <TextField
-                  label={t("contact5")}
-                  placeholder={t("contact7")}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#eadccc" }} />
-                      </InputAdornment>
-                    ),
-                  }}
+                  label={t("contact10")}
+                  placeholder={t("contact11")}
+                  multiline
+                  minRows={4}
                 />
+
+                {/* زر الإرسال */}
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    backgroundColor: "#0a3d62",
+                    color: "white",
+                    py: 1.5,
+                    borderRadius: "999px",
+                    mt: 5, // زودت المسافة فوق الزر
+                  }}
+                >
+                  {t("contact12")} ➝
+                </Button>
               </Box>
-
-              {/* البريد الإلكتروني */}
-              <TextField
-                label={t("contact8")}
-                placeholder={t("contact9")}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <EmailIcon sx={{ color: "#eadccc" }} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-
-              {/* الرسالة */}
-              <TextField
-                label={t("contact10")}
-                placeholder={t("contact11")}
-                multiline
-                minRows={4}
-              />
-
-              {/* زر الإرسال */}
-              <Button
-                variant="contained"
-                fullWidth
-                sx={{
-                  backgroundColor: "#0a3d62",
-                  color: "white",
-                  py: 1.5,
-                  borderRadius: "999px",
-                  mt: 5, // زودت المسافة فوق الزر
-                }}
-              >
-                {t("contact12")} ➝
-              </Button>
-            </Box>
-          </Container>
+            </Container>
+          </motion.div>
         </Box>
       </Box>
     </div>

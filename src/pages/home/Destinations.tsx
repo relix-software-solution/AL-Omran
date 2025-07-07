@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery, useTheme } from "@mui/material";
+import { motion } from "motion/react";
 
 const images = [
   {
@@ -37,36 +39,73 @@ const Destinations = () => {
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
   const [t, i18n] = useTranslation();
-
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <>
       <div dir={t("dir")} id="dest">
         <Box sx={{ width: "90%", margin: "100px auto" }}>
           <Box sx={{ marginBottom: "30px", textAlign: "center" }}>
-            <Typography
-              component="span"
-              sx={{ fontSize: "36px", color: "#193a51" }}
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.2,
+                  duration: 0.8,
+                  ease: [0.75, 0.01, 0.31, 1],
+                },
+              }}
+              viewport={{ once: false, amount: 0.5 }}
             >
-              {t("destination")}
-            </Typography>
+              <Typography
+                component="span"
+                sx={{ fontSize: "36px", color: "#193a51" }}
+              >
+                {t("destination")}
+              </Typography>
+            </motion.div>
           </Box>
-          <Box>
-            <Typography
-              component="span"
-              sx={{ fontSize: "28px", color: "#193a51" }}
-            >
-              {t("dest1")}
-            </Typography>
-          </Box>
-          <Box sx={{ marginBottom: "8px" }}>
-            <Typography
-              component="span"
-              sx={{ fontSize: "20px", color: "#193a51" }}
-            >
-              <PlaceIcon sx={{ color: "#ff0000", fontSize: "18px" }} />{" "}
-              {t("dest2")}
-            </Typography>
-          </Box>
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+              y: isMdUp ? 0 : 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
+          >
+            <Box>
+              <Typography
+                component="span"
+                sx={{ fontSize: "28px", color: "#193a51" }}
+              >
+                {t("dest1")}
+              </Typography>
+            </Box>
+            <Box sx={{ marginBottom: "8px" }}>
+              <Typography
+                component="span"
+                sx={{ fontSize: "20px", color: "#193a51" }}
+              >
+                <PlaceIcon sx={{ color: "#ff0000", fontSize: "18px" }} />{" "}
+                {t("dest2")}
+              </Typography>
+            </Box>
+          </motion.div>
           <Box
             sx={{
               display: { xs: "block", md: "flex" },
@@ -165,35 +204,54 @@ const Destinations = () => {
               </Box>
             ))}
           </Box>
-          <Link to="/destinations#dest">
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#135a88",
-                color: "#fff",
-                textTransform: "none",
-                borderRadius: "20px",
-                width: { xs: "100%", md: "400px" },
-                fontSize: { xs: "18px", md: "24px" },
-                px: 2,
-                mt: { xs: 1, md: 0 }, // مسافة بسيطة فوق على الجوال
-                "&:hover": {
-                  backgroundColor: "#0f4569",
-                },
-              }}
-            >
-              {t("dest3")}
-              {i18n.language === "ar" ? (
-                <ArrowCircleLeftIcon
-                  sx={{ padding: "0 5px", color: "#eadccc" }}
-                />
-              ) : (
-                <ArrowCircleRightIcon
-                  sx={{ padding: "0 5px", color: "#eadccc" }}
-                />
-              )}
-            </Button>
-          </Link>
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+              y: isMdUp ? 0 : 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
+          >
+            <Link to="/destinations#dest">
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#135a88",
+                  color: "#fff",
+                  textTransform: "none",
+                  borderRadius: "20px",
+                  width: { xs: "100%", md: "400px" },
+                  fontSize: { xs: "18px", md: "24px" },
+                  px: 2,
+                  mt: { xs: 1, md: 0 }, // مسافة بسيطة فوق على الجوال
+                  "&:hover": {
+                    backgroundColor: "#0f4569",
+                  },
+                }}
+              >
+                {t("dest3")}
+                {i18n.language === "ar" ? (
+                  <ArrowCircleLeftIcon
+                    sx={{ padding: "0 5px", color: "#eadccc" }}
+                  />
+                ) : (
+                  <ArrowCircleRightIcon
+                    sx={{ padding: "0 5px", color: "#eadccc" }}
+                  />
+                )}
+              </Button>
+            </Link>
+          </motion.div>
         </Box>
       </div>
     </>

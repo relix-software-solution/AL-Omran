@@ -4,12 +4,17 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const AboutUs = () => {
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
+
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <>
       <div dir={t("dir")} id="about">
@@ -20,12 +25,31 @@ const AboutUs = () => {
             alignContent: { xs: "center", md: "flex-start" },
           }}
         >
-          <Typography
-            component="span"
-            sx={{ fontSize: "36px", color: "#193a51" }}
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+              y: isMdUp ? 0 : 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
           >
-            {t("aboutUs")}
-          </Typography>
+            <Typography
+              component="span"
+              sx={{ fontSize: "36px", color: "#193a51" }}
+            >
+              {t("aboutUs")}
+            </Typography>
+          </motion.div>
         </Box>
       </div>
       <div dir={t("dir")}>
@@ -38,17 +62,36 @@ const AboutUs = () => {
           }}
         >
           <Box sx={{ width: { xs: "100%", md: "47%" } }}>
-            <Box
-              component="img"
-              src={aboutImage}
-              alt="About Us"
-              sx={{
-                width: "100%",
-                height: { xs: 200, md: 400 },
-                objectFit: "cover",
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+                y: isMdUp ? 0 : 50,
               }}
-              loading="lazy"
-            />
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: {
+                  delay: 0.2,
+                  duration: 0.8,
+                  ease: [0.75, 0.01, 0.31, 1],
+                },
+              }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              <Box
+                component="img"
+                src={aboutImage}
+                alt="About Us"
+                sx={{
+                  width: "100%",
+                  height: { xs: 200, md: 400 },
+                  objectFit: "cover",
+                }}
+                loading="lazy"
+              />
+            </motion.div>
           </Box>
           <Box
             sx={{
@@ -65,85 +108,118 @@ const AboutUs = () => {
                 textAlign: { xs: "left", md: "center" },
               }}
             >
-              <Typography
-                component="h1"
-                sx={{
-                  fontSize: "32px",
-                  color: "#000",
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: isMdUp ? (i18n.language === "ar" ? -50 : 50) : 0,
+                  y: isMdUp ? 0 : 50,
                 }}
-              >
-                {t("about1")}
-              </Typography>{" "}
-              <Typography
-                component="span"
-                sx={{
-                  fontSize: "16px",
-                  color: "#000",
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  transition: {
+                    delay: 0.2,
+                    duration: 0.8,
+                    ease: [0.75, 0.01, 0.31, 1],
+                  },
                 }}
+                viewport={{ once: false, amount: 0.5 }}
               >
-                {t("about2")}
-              </Typography>{" "}
+                <Typography
+                  component="h1"
+                  sx={{
+                    fontSize: "32px",
+                    color: "#000",
+                  }}
+                >
+                  {t("about1")}
+                </Typography>{" "}
+                <Typography
+                  component="span"
+                  sx={{
+                    fontSize: "16px",
+                    color: "#000",
+                  }}
+                >
+                  {t("about2")}
+                </Typography>
+              </motion.div>
             </Box>
           </Box>
         </Box>
       </div>
-      <Box
-        sx={{
-          width: "90%",
-          margin: "auto",
-          display: { xs: "block", md: "flex" },
-          justifyContent: "space-between",
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 0.6,
+            duration: 0.8,
+            ease: [0.75, 0.01, 0.31, 1],
+          },
         }}
+        viewport={{ once: false, amount: 0.5 }}
       >
         <Box
           sx={{
-            backgroundColor: "rgba(19, 90, 136)",
-            backdropFilter: "blur(24px)",
-            color: "#fff",
-            p: { xs: 4, md: 4 },
-            width: { xs: "80%", md: "40%" },
-            margin: { xs: "0px auto 20px", md: "20px 0 20px 0" },
-            textAlign: "center",
+            width: "90%",
+            margin: "auto",
+            display: { xs: "block", md: "flex" },
+            justifyContent: "space-between",
           }}
         >
-          <Typography
-            component="h1"
+          <Box
             sx={{
-              fontSize: "28px",
-              color: "#eadccc",
+              backgroundColor: "rgba(19, 90, 136)",
+              backdropFilter: "blur(24px)",
+              color: "#fff",
+              p: { xs: 4, md: 4 },
+              width: { xs: "80%", md: "40%" },
+              margin: { xs: "0px auto 20px", md: "20px 0 20px 0" },
+              textAlign: "center",
             }}
           >
-            {t("vision")}
-          </Typography>{" "}
-          {t("vision1")}
-        </Box>
-        <Box
-          sx={{
-            backgroundColor: "rgba(19, 90, 136)",
-            backdropFilter: "blur(24px)",
-            color: "#fff",
-            p: { xs: 4, md: 4 },
-            width: { xs: "80%", md: "40%" },
-            margin: { xs: "0px auto 20px", md: "20px 0 20px 0" },
-            textAlign: "center",
-          }}
-        >
-          <Typography
-            component="h1"
+            <Typography
+              component="h1"
+              sx={{
+                fontSize: "28px",
+                color: "#eadccc",
+              }}
+            >
+              {t("vision")}
+            </Typography>{" "}
+            {t("vision1")}
+          </Box>
+          <Box
             sx={{
-              fontSize: "28px",
-              color: "#eadccc",
+              backgroundColor: "rgba(19, 90, 136)",
+              backdropFilter: "blur(24px)",
+              color: "#fff",
+              p: { xs: 4, md: 4 },
+              width: { xs: "80%", md: "40%" },
+              margin: { xs: "0px auto 20px", md: "20px 0 20px 0" },
+              textAlign: "center",
             }}
           >
-            {t("mission")}
-          </Typography>{" "}
-          {t("mission1")}
-        </Box>
-      </Box>
+            <Typography
+              component="h1"
+              sx={{
+                fontSize: "28px",
+                color: "#eadccc",
+              }}
+            >
+              {t("mission")}
+            </Typography>{" "}
+            {t("mission1")}
+          </Box>
+        </Box>{" "}
+      </motion.div>
       <div dir={t("dir")}>
         <Box
           sx={{
-            height: { xs: "300px", md: "100px" },
+            height: { xs: "300px", md: "150px" },
             backgroundColor: "#193a51",
             margin: "30px 0",
             alignContent: "center",

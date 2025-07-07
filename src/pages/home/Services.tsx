@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
 
 const services = [
   {
@@ -54,6 +55,8 @@ const Services = () => {
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
   const [t, i18n] = useTranslation();
+  const theme1 = useTheme();
+  const isMdUp = useMediaQuery(theme1.breakpoints.up("md"));
 
   return (
     <>
@@ -75,23 +78,42 @@ const Services = () => {
                 px: 2,
               }}
             >
-              {/* العنوان في الأعلى */}{" "}
-              <Typography
-                variant="h5"
-                sx={{
-                  fontSize: "36px",
-                  color: "#193a51",
-                  mb: 2,
-                  ...(i18n.language === "ar" && {
-                    textAlign: {
-                      xs: "right", // على الموبايل
-                      sm: "left", // على الشاشات الأكبر ترجع للوضع الطبيعي
-                    },
-                  }),
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: -50,
+                  y: isMdUp ? 0 : 50,
                 }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  transition: {
+                    delay: 0.2,
+                    duration: 0.8,
+                    ease: [0.75, 0.01, 0.31, 1],
+                  },
+                }}
+                viewport={{ once: false, amount: 0.5 }}
               >
-                {t("services")}
-              </Typography>
+                {/* العنوان في الأعلى */}{" "}
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontSize: "36px",
+                    color: "#193a51",
+                    mb: 2,
+                    ...(i18n.language === "ar" && {
+                      textAlign: {
+                        xs: "right", // على الموبايل
+                        sm: "left", // على الشاشات الأكبر ترجع للوضع الطبيعي
+                      },
+                    }),
+                  }}
+                >
+                  {t("services")}
+                </Typography>
+              </motion.div>
               {/* البوكس الذي يتمركز عمودياً */}
               <div dir={t("dir")}>
                 {" "}
@@ -107,7 +129,26 @@ const Services = () => {
                     transform: { md: "translateY(-50%)" },
                   }}
                 >
-                  <Typography variant="body1">{t("serv1")}</Typography>
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      x: -50,
+                      y: isMdUp ? 0 : 50,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      y: 0,
+                      transition: {
+                        delay: 0.8,
+                        duration: 0.8,
+                        ease: [0.75, 0.01, 0.31, 1],
+                      },
+                    }}
+                    viewport={{ once: false, amount: 0.5 }}
+                  >
+                    <Typography variant="body1">{t("serv1")}</Typography>
+                  </motion.div>
                 </Box>
               </div>
             </Box>
@@ -134,57 +175,78 @@ const Services = () => {
               {/* Service items */}
               <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 {services.map((service, index) => (
-                  <Box
+                  <motion.div
                     key={index}
-                    className="service-item"
-                    sx={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      position: "relative",
+                    initial={{
+                      opacity: 0,
+                      x: isMdUp ? 50 : 0,
+                      y: isMdUp ? 0 : 50,
                     }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      y: 0,
+                      transition: {
+                        delay: 0.2,
+                        duration: 0.8,
+                        ease: [0.75, 0.01, 0.31, 1],
+                      },
+                    }}
+                    viewport={{ once: false, amount: 0.5 }}
                   >
-                    {/* Dot */}
                     <Box
+                      className="service-item"
                       sx={{
-                        width: 8,
-                        height: 8,
-                        borderRadius: "50%",
-                        backgroundColor: "black",
-                        position: "absolute",
-                        left: -20,
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                    />
-                    {/* Content */}
-                    <Box
-                      sx={{
-                        backgroundColor: "rgba(19, 90, 136, 0.54)",
-                        color: "white",
-                        p: 2,
-                        width: "100%",
-                        ml: { xs: 0, md: 4 }, // تبعد النص عن الخط بالـ desktop فقط
-                        maxWidth: { xs: "100%", md: "80%" }, // تضييق العرض قليلاً بالـ desktop
+                        display: "flex",
+                        alignItems: "flex-start",
+                        position: "relative",
                       }}
                     >
-                      <div dir={t("dir")}>
-                        <Typography sx={{ fontSize: "24px", color: "#193a51" }}>
-                          {i18n.language === "ar"
-                            ? service.titleAr
-                            : service.title}
-                        </Typography>
-                      </div>
-                      <div dir={t("dir")}>
-                        {" "}
-                        <Typography>
+                      {/* Dot */}
+                      <Box
+                        sx={{
+                          width: 8,
+                          height: 8,
+                          borderRadius: "50%",
+                          backgroundColor: "black",
+                          position: "absolute",
+                          left: -20,
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                        }}
+                      />
+                      {/* Content */}
+                      <Box
+                        sx={{
+                          backgroundColor: "rgba(19, 90, 136, 0.54)",
+                          color: "white",
+                          p: 2,
+                          width: "100%",
+                          ml: { xs: 0, md: 4 }, // تبعد النص عن الخط بالـ desktop فقط
+                          maxWidth: { xs: "100%", md: "80%" }, // تضييق العرض قليلاً بالـ desktop
+                        }}
+                      >
+                        <div dir={t("dir")}>
+                          <Typography
+                            sx={{ fontSize: "24px", color: "#193a51" }}
+                          >
+                            {i18n.language === "ar"
+                              ? service.titleAr
+                              : service.title}
+                          </Typography>
+                        </div>
+                        <div dir={t("dir")}>
                           {" "}
-                          {i18n.language === "ar"
-                            ? service.descriptionAr
-                            : service.description}
-                        </Typography>
-                      </div>
+                          <Typography>
+                            {" "}
+                            {i18n.language === "ar"
+                              ? service.descriptionAr
+                              : service.description}
+                          </Typography>
+                        </div>
+                      </Box>
                     </Box>
-                  </Box>
+                  </motion.div>
                 ))}
               </Box>
             </Box>

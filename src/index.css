@@ -34,3 +34,6 @@ body {
   padding: 0;
   font-family: "Jenna LT";
 }
+a {
+  text-decoration: none;
+}
