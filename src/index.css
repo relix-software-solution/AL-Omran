@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Janna LT";
-  src: url("./Janna LT Bold.ttf") format("truetype");
-  font-weight: bold;
+  src: url("./fonts/Janna LT Bold.ttf") format("truetype");
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
