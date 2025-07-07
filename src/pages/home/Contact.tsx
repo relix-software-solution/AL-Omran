@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
   const [t] = useTranslation();
 
   return (
-    <div dir={t("dir")}>
+    <div dir={t("dir")} id="contact">
       {" "}
       <Box
         sx={{
@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
           flexDirection: { xs: "column", md: "row" },
           height: "100vh",
           width: { xs: "100%", md: "90%" },
-          margin: "50px auto",
+          margin: "100px auto",
           position: "relative",
         }}
       >

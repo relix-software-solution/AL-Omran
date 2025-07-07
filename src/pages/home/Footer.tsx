@@ -4,6 +4,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslation } from "react-i18next";
+import { HashLink as Link } from "react-router-hash-link";
 
 const Footer = () => {
   /* -------------------------------------------------------------------------- */
@@ -66,33 +67,44 @@ const Footer = () => {
             >
               <Box sx={{ width: "50%" }}>
                 {" "}
-                <Typography
-                  component="h5"
-                  sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
-                >
-                  {t("home")}
-                </Typography>
-                <Typography
-                  component="h5"
-                  sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
-                >
-                  {t("aboutUs")}
-                </Typography>
-                <Typography
-                  component="h5"
-                  sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
-                >
-                  {t("services")}
-                </Typography>
+                <Link to="/#home">
+                  {" "}
+                  <Typography
+                    component="h5"
+                    sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                  >
+                    {t("home")}
+                  </Typography>
+                </Link>
+                <Link to="/#about">
+                  {" "}
+                  <Typography
+                    component="h5"
+                    sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                  >
+                    {t("aboutUs")}
+                  </Typography>
+                </Link>
+                <Link to="/#services">
+                  {" "}
+                  <Typography
+                    component="h5"
+                    sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                  >
+                    {t("services")}
+                  </Typography>
+                </Link>
               </Box>
               <Box sx={{ width: "50%" }}>
                 {" "}
-                <Typography
-                  component="h5"
-                  sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
-                >
-                  {t("footer6")}
-                </Typography>
+                <Link to="/#contact">
+                  <Typography
+                    component="h5"
+                    sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                  >
+                    {t("footer6")}
+                  </Typography>
+                </Link>
                 <Typography
                   component="h5"
                   sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}

@@ -43,7 +43,7 @@ const Residential = () => {
   const [t] = useTranslation();
   return (
     <>
-      <div dir={t("dir")}>
+      <div dir={t("dir")} id="res">
         <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
           <Typography
             variant="h2"

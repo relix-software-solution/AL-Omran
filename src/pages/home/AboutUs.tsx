@@ -12,11 +12,11 @@ const AboutUs = () => {
   const [t] = useTranslation();
   return (
     <>
-      <div dir={t("dir")}>
+      <div dir={t("dir")} id="about">
         <Box
           sx={{
             width: "90%",
-            margin: "30px auto",
+            margin: "100px auto 30px",
             alignContent: { xs: "center", md: "flex-start" },
           }}
         >

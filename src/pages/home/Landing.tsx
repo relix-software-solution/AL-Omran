@@ -10,7 +10,7 @@ const Landing = () => {
   const [t] = useTranslation();
 
   return (
-    <div dir={t("dir")}>
+    <div dir={t("dir")} id="home">
       <Box
         sx={{
           width: "100%",

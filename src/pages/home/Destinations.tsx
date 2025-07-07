@@ -1,3 +1,4 @@
+import { HashLink as Link } from "react-router-hash-link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
@@ -39,8 +40,8 @@ const Destinations = () => {
 
   return (
     <>
-      <div dir={t("dir")}>
-        <Box sx={{ width: "90%", margin: "30px auto" }}>
+      <div dir={t("dir")} id="dest">
+        <Box sx={{ width: "90%", margin: "100px auto" }}>
           <Box sx={{ marginBottom: "30px", textAlign: "center" }}>
             <Typography
               component="span"
@@ -96,6 +97,7 @@ const Destinations = () => {
                 }}
               >
                 {/* الصورة */}
+
                 <Box
                   component="img"
                   className="image"
@@ -158,41 +160,40 @@ const Destinations = () => {
                     >
                       {i18n.language === "ar" ? img.labelAr : img.label}
                     </Typography>
-
-                    {img.hasButton && (
-                      <Button
-                        variant="contained"
-                        size="small"
-                        href="/project"
-                        sx={{
-                          backgroundColor: "#135a88",
-                          color: "#fff",
-                          textTransform: "none",
-                          borderRadius: "20px",
-                          px: 2,
-                          mt: { xs: 1, md: 0 }, // مسافة بسيطة فوق على الجوال
-                          "&:hover": {
-                            backgroundColor: "#0f4569",
-                          },
-                        }}
-                      >
-                        {t("dest3")}
-                        {i18n.language === "ar" ? (
-                          <ArrowCircleLeftIcon
-                            sx={{ padding: "0 5px", color: "#eadccc" }}
-                          />
-                        ) : (
-                          <ArrowCircleRightIcon
-                            sx={{ padding: "0 5px", color: "#eadccc" }}
-                          />
-                        )}
-                      </Button>
-                    )}
                   </Box>
                 </Box>
               </Box>
             ))}
           </Box>
+          <Link to="/destinations#dest">
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#135a88",
+                color: "#fff",
+                textTransform: "none",
+                borderRadius: "20px",
+                width: { xs: "100%", md: "400px" },
+                fontSize: { xs: "18px", md: "24px" },
+                px: 2,
+                mt: { xs: 1, md: 0 }, // مسافة بسيطة فوق على الجوال
+                "&:hover": {
+                  backgroundColor: "#0f4569",
+                },
+              }}
+            >
+              {t("dest3")}
+              {i18n.language === "ar" ? (
+                <ArrowCircleLeftIcon
+                  sx={{ padding: "0 5px", color: "#eadccc" }}
+                />
+              ) : (
+                <ArrowCircleRightIcon
+                  sx={{ padding: "0 5px", color: "#eadccc" }}
+                />
+              )}
+            </Button>
+          </Link>
         </Box>
       </div>
     </>

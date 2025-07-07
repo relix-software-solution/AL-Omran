@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import backgroundLanding from "../../assets/image/12.webp";
 import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
+import { HashLink as Link } from "react-router-hash-link";
 
 const Landing = () => {
   /* -------------------------------------------------------------------------- */
@@ -11,7 +12,7 @@ const Landing = () => {
   const [t] = useTranslation();
 
   return (
-    <div dir={t("dir")}>
+    <div dir={t("dir")} id="dest">
       <Box
         sx={{
           width: "100%",
@@ -71,31 +72,36 @@ const Landing = () => {
           >
             {t("dest4")}
           </Typography>
-          <Button
-            sx={{
-              width: { xs: "140px", md: "200px" },
-              padding: "10px 20px",
-              fontSize: "24px",
-              background: "#c09660",
-              color: "#fff",
-              borderRadius: "40px",
-            }}
-          >
-            {t("dest5")}
-          </Button>
-          <Button
-            sx={{
-              width: { xs: "140px", md: "200px" },
-              padding: "10px 20px",
-              fontSize: "24px",
-              background: "#c09660",
-              color: "#fff",
-              borderRadius: "40px",
-              margin: "0 10px",
-            }}
-          >
-            {t("dest6")}
-          </Button>
+          <Link to="/destinations#res">
+            {" "}
+            <Button
+              sx={{
+                width: { xs: "140px", md: "200px" },
+                padding: "10px 20px",
+                fontSize: "24px",
+                background: "#c09660",
+                color: "#fff",
+                borderRadius: "40px",
+              }}
+            >
+              {t("dest5")}
+            </Button>
+          </Link>
+          <Link to="/destinations#comm">
+            <Button
+              sx={{
+                width: { xs: "140px", md: "200px" },
+                padding: "10px 20px",
+                fontSize: "24px",
+                background: "#c09660",
+                color: "#fff",
+                borderRadius: "40px",
+                margin: "0 10px",
+              }}
+            >
+              {t("dest6")}
+            </Button>
+          </Link>
         </Box>
       </Box>
     </div>
