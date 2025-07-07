@@ -1,5 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
+import { HashLink as Link } from "react-router-hash-link";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -81,15 +82,20 @@ export default function AppAppBar() {
                 margin: "0px 10px",
               }}
             >
-              <Button variant="text" size="medium" sx={{ color: "#eadccc" }}>
-                {t("home")}
-              </Button>
+              <Link to="/">
+                <Button variant="text" size="medium" sx={{ color: "#eadccc" }}>
+                  {t("home")}
+                </Button>
+              </Link>
               <Button variant="text" size="medium">
                 {t("about")}
               </Button>
-              <Button variant="text" size="medium">
-                {t("destination")}
-              </Button>
+              <Link to="/destinations">
+                {" "}
+                <Button variant="text" size="medium">
+                  {t("destination")}
+                </Button>
+              </Link>
               <Button variant="text" size="medium">
                 {t("services")}
               </Button>

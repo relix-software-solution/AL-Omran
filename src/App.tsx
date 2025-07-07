@@ -1,23 +1,26 @@
-import AppAppBar from "./pages/home/navBar";
-import Landing from "./pages/home/Landing";
-import AboutUs from "./pages/home/AboutUs";
-import Destinations from "./pages/home/Destinations";
-import Services from "./pages/home/Services";
-import Contact from "./pages/home/Contact";
-import Footer from "./pages/home/Footer";
-import Preloader from "./components/Preloader";
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import NavBar from "./pages/home/navBar";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
     <>
-      <Preloader />
-      <AppAppBar />
-      <Landing />
-      <AboutUs />
-      <Destinations />
-      <Services />
-      <Contact />
-      <Footer />
+      <NavBar />
+      <div id="main">
+        <Outlet />
+      </div>
     </>
   );
 }

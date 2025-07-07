@@ -1,7 +1,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import backgroundLanding from "../../assets/image/landing.webp";
+import backgroundLanding from "../../assets/image/12.webp";
 import { useTranslation } from "react-i18next";
+import { Button } from "@mui/material";
 
 const Landing = () => {
   /* -------------------------------------------------------------------------- */
@@ -49,7 +50,8 @@ const Landing = () => {
             width: "100%",
             height: "50%",
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0))",
+              "linear-gradient(to top, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0) 100%)",
+
             zIndex: 1,
           }}
         />
@@ -60,29 +62,41 @@ const Landing = () => {
             position: "relative",
             zIndex: 2,
             px: { xs: 2, sm: 4, md: 8 },
-            pb: { xs: 4, sm: 6, md: 10 },
+            pb: { xs: 4, sm: 6, md: 16 },
             maxWidth: "800px",
           }}
         >
-          <Typography variant="h3" sx={{ color: "#eadccc", mb: 2 }}>
-            {t("title")}
-          </Typography>
           <Typography
-            variant="h3"
+            variant="h2"
+            sx={{ color: "#FFF", mb: 2, fontSize: { xs: "3rem", md: "5rem" } }}
+          >
+            {t("dest4")}
+          </Typography>
+          <Button
             sx={{
-              // fontWeight: "bold",
-              mb: 2,
-              fontSize: { xs: "2rem", sm: "2.5rem" },
+              width: { xs: "140px", md: "200px" },
+              padding: "10px 20px",
+              fontSize: "24px",
+              background: "#193a51",
+              color: "#eadccc",
+              borderRadius: "40px",
             }}
           >
-            {t("contentLan")}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}
+            {t("dest5")}
+          </Button>
+          <Button
+            sx={{
+              width: { xs: "140px", md: "200px" },
+              padding: "10px 20px",
+              fontSize: "24px",
+              background: "#193a51",
+              color: "#eadccc",
+              borderRadius: "40px",
+              margin: "0 10px",
+            }}
           >
-            {t("contentLan2")}
-          </Typography>
+            {t("dest6")}
+          </Button>
         </Box>
       </Box>
     </div>
