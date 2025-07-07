@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Typography from "@mui/material/Typography";
 import LanguageIcon from "@mui/icons-material/Language";
+import { useTranslation } from "react-i18next";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -33,139 +34,196 @@ export default function AppAppBar() {
     setOpen(newOpen);
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                 Translation                                */
+  /* -------------------------------------------------------------------------- */
+  const [t, i18n] = useTranslation();
+
   return (
-    <AppBar
-      position="fixed"
-      enableColorOnDark
-      sx={{
-        boxShadow: 0,
-        bgcolor: "transparent",
-        backgroundImage: "none",
-        mt: "calc(var(--template-frame-height, 0px) + 28px)",
-      }}
-    >
-      <Box
+    <div dir={t("dir")}>
+      <AppBar
+        position="fixed"
+        enableColorOnDark
         sx={{
-          width: "92%",
-          margin: "auto",
+          boxShadow: 0,
+          bgcolor: "transparent",
+          backgroundImage: "none",
+          mt: "calc(var(--template-frame-height, 0px) + 28px)",
         }}
       >
-        <StyledToolbar variant="dense" disableGutters>
-          <Box
-            sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
-          >
-            <Box>
-              <Typography
-                sx={{
-                  fontSize: { xs: "24px", md: "36px" },
-                  paddingLeft: "20px",
-                  color: "#eadccc",
-                }}
-              >
-                Al-Omran
-              </Typography>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              gap: 1,
-              alignItems: "center",
-              margin: "0px 10px",
-            }}
-          >
-            <Button variant="text" size="medium" sx={{ color: "#eadccc" }}>
-              Home
-            </Button>
-            <Button variant="text" size="medium">
-              About Us
-            </Button>
-            <Button variant="text" size="medium">
-              Destinations
-            </Button>
-            <Button variant="text" size="medium">
-              Services
-            </Button>
-            <Button variant="text" size="medium" sx={{ color: "#eadccc" }}>
-              Ar
-              <LanguageIcon
-                sx={{ margin: "0px 5px", color: "#fff", fontSize: "18px" }}
-              />
-            </Button>
-            <Button
-              variant="contained"
-              size="medium"
-              sx={{ borderRadius: "40px", color: "#eadccc" }}
+        <Box
+          sx={{
+            width: "92%",
+            margin: "auto",
+          }}
+        >
+          <StyledToolbar variant="dense" disableGutters>
+            <Box
+              sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
             >
-              Get in touch
-            </Button>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
-            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              <MenuIcon sx={{ margin: "0 10px", color: "#fff" }} />
-            </IconButton>
-            <Drawer
-              anchor="top"
-              open={open}
-              onClose={toggleDrawer(false)}
-              PaperProps={{
-                sx: {
-                  top: "var(--template-frame-height, 0px)",
-                  backgroundColor: "transparent",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  p: 2,
-                  backgroundColor: "rgba(19, 90, 136, 0.54)",
-                  backdropFilter: "blur(24px)",
-                }}
-              >
-                <Box
+              <Box>
+                <Typography
                   sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
+                    fontSize: { xs: "24px", md: "36px" },
+                    padding: "0px 20px",
+                    color: "#eadccc",
                   }}
                 >
-                  <Button
-                    variant="text"
-                    size="medium"
-                    sx={{ color: "#eadccc" }}
-                  >
-                    Ar
-                    <LanguageIcon
-                      sx={{
-                        margin: "0px 5px",
-                        color: "#fff",
-                        fontSize: "18px",
-                      }}
-                    />
-                  </Button>
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <CloseRoundedIcon sx={{ color: "#fff" }} />
-                  </IconButton>
-                </Box>
-                <MenuItem sx={{ color: "#eadccc" }}>Home</MenuItem>
-                <MenuItem>About Us</MenuItem>
-                <MenuItem>Destinations</MenuItem>
-                <MenuItem>Services</MenuItem>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem>
-                  <Button
-                    variant="contained"
-                    size="medium"
-                    sx={{ borderRadius: "40px", color: "#eadccc" }}
-                    fullWidth
-                  >
-                    Get in touch
-                  </Button>
-                </MenuItem>
+                  {t("title")}
+                </Typography>
               </Box>
-            </Drawer>
-          </Box>
-        </StyledToolbar>
-      </Box>
-    </AppBar>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                gap: 1,
+                alignItems: "center",
+                margin: "0px 10px",
+              }}
+            >
+              <Button variant="text" size="medium" sx={{ color: "#eadccc" }}>
+                {t("home")}
+              </Button>
+              <Button variant="text" size="medium">
+                {t("about")}
+              </Button>
+              <Button variant="text" size="medium">
+                {t("destination")}
+              </Button>
+              <Button variant="text" size="medium">
+                {t("services")}
+              </Button>
+              {i18n.language === "ar" && (
+                <Button
+                  onClick={() => {
+                    i18n.changeLanguage("en");
+                  }}
+                  variant="text"
+                  size="medium"
+                  sx={{ color: "#eadccc" }}
+                >
+                  En
+                  <LanguageIcon
+                    sx={{ margin: "0px 5px", color: "#fff", fontSize: "18px" }}
+                  />
+                </Button>
+              )}
+              {i18n.language === "en" && (
+                <Button
+                  onClick={() => {
+                    i18n.changeLanguage("ar");
+                  }}
+                  variant="text"
+                  size="medium"
+                  sx={{ color: "#eadccc" }}
+                >
+                  Ar
+                  <LanguageIcon
+                    sx={{ margin: "0px 5px", color: "#fff", fontSize: "18px" }}
+                  />
+                </Button>
+              )}
+              <Button
+                variant="contained"
+                size="medium"
+                sx={{ borderRadius: "40px", color: "#eadccc" }}
+              >
+                {t("getInTouch")}
+              </Button>
+            </Box>
+            <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
+              <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+                <MenuIcon sx={{ margin: "0 10px", color: "#fff" }} />
+              </IconButton>
+              <Drawer
+                anchor="top"
+                open={open}
+                onClose={toggleDrawer(false)}
+                PaperProps={{
+                  sx: {
+                    top: "var(--template-frame-height, 0px)",
+                    backgroundColor: "transparent",
+                  },
+                }}
+              >
+                <div dir={t("dir")}>
+                  <Box
+                    sx={{
+                      p: 2,
+                      backgroundColor: "rgba(19, 90, 136, 0.54)",
+                      backdropFilter: "blur(24px)",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {i18n.language === "ar" && (
+                        <Button
+                          onClick={() => {
+                            i18n.changeLanguage("en");
+                          }}
+                          variant="text"
+                          size="medium"
+                          sx={{ color: "#eadccc" }}
+                        >
+                          En
+                          <LanguageIcon
+                            sx={{
+                              margin: "0px 5px",
+                              color: "#fff",
+                              fontSize: "18px",
+                            }}
+                          />
+                        </Button>
+                      )}
+                      {i18n.language === "en" && (
+                        <Button
+                          onClick={() => {
+                            i18n.changeLanguage("ar");
+                          }}
+                          variant="text"
+                          size="medium"
+                          sx={{ color: "#eadccc" }}
+                        >
+                          Ar
+                          <LanguageIcon
+                            sx={{
+                              margin: "0px 5px",
+                              color: "#fff",
+                              fontSize: "18px",
+                            }}
+                          />
+                        </Button>
+                      )}
+                      <IconButton onClick={toggleDrawer(false)}>
+                        <CloseRoundedIcon sx={{ color: "#fff" }} />
+                      </IconButton>
+                    </Box>
+                    <MenuItem sx={{ color: "#eadccc" }}>{t("home")}</MenuItem>
+                    <MenuItem> {t("about")}</MenuItem>
+                    <MenuItem> {t("destination")}</MenuItem>
+                    <MenuItem> {t("services")}</MenuItem>
+                    <Divider sx={{ my: 3 }} />
+                    <MenuItem>
+                      <Button
+                        variant="contained"
+                        size="medium"
+                        sx={{ borderRadius: "40px", color: "#eadccc" }}
+                        fullWidth
+                      >
+                        {t("getInTouch")}
+                      </Button>
+                    </MenuItem>
+                  </Box>
+                </div>
+              </Drawer>
+            </Box>
+          </StyledToolbar>
+        </Box>
+      </AppBar>
+    </div>
   );
 }

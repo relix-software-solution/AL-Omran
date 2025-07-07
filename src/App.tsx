@@ -10,7 +10,7 @@ import Preloader from "./components/Preloader";
 function App() {
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
       <AppAppBar />
       <Landing />
       <AboutUs />

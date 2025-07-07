@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Janna LT";
+  src: url("./Janna LT Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Future Now";
+  src: url("./fonts/FuturaNowHeadline.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --main-color: #193a51;
 }
@@ -16,7 +28,9 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   padding: 0;
+  font-family: "Jenna LT";
 }

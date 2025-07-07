@@ -1,8 +1,11 @@
 import { createTheme } from "@mui/material/styles";
+import i18n from "./components/i18n";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Future Now, Arial, sans-serif",
+    // في الـ MUI theme
+    fontFamily: i18n.language === "ar" ? "Janna LT" : "Future Now",
+
     allVariants: {
       color: "#fff",
     },
