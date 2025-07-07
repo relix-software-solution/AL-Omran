@@ -77,8 +77,8 @@ const Landing = () => {
               width: { xs: "140px", md: "200px" },
               padding: "10px 20px",
               fontSize: "24px",
-              background: "#193a51",
-              color: "#eadccc",
+              background: "#c09660",
+              color: "#fff",
               borderRadius: "40px",
             }}
           >
@@ -89,8 +89,8 @@ const Landing = () => {
               width: { xs: "140px", md: "200px" },
               padding: "10px 20px",
               fontSize: "24px",
-              background: "#193a51",
-              color: "#eadccc",
+              background: "#c09660",
+              color: "#fff",
               borderRadius: "40px",
               margin: "0 10px",
             }}

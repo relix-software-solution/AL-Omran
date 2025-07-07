@@ -14,6 +14,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Typography from "@mui/material/Typography";
 import LanguageIcon from "@mui/icons-material/Language";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -39,6 +40,10 @@ export default function AppAppBar() {
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
   const [t, i18n] = useTranslation();
+
+  const location = useLocation();
+  const titleKey =
+    location.pathname === "/destinations" ? "title_dest" : "title";
 
   return (
     <div dir={t("dir")}>
@@ -70,7 +75,7 @@ export default function AppAppBar() {
                     color: "#eadccc",
                   }}
                 >
-                  {t("title")}
+                  {t(titleKey)}
                 </Typography>
               </Box>
             </Box>
