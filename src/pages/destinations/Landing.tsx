@@ -54,7 +54,7 @@ const Landing = () => {
             color: "#fff",
             borderRadius: "40px",
             width: scrolled ? "50px" : { xs: "160px", md: "300px" },
-            fontSize: { xs: "20px", md: "24px" },
+            fontSize: { xs: "14px", md: "24px" },
             height: scrolled ? "50px" : "70px",
             minWidth: "unset",
             transition: "all 0.3s ease",
@@ -79,7 +79,7 @@ const Landing = () => {
               color: "#fff",
               borderRadius: "40px",
               width: scrolled ? "50px" : { xs: "160px", md: "300px" },
-              fontSize: { xs: "20px", md: "24px" },
+              fontSize: { xs: "14px", md: "24px" },
               height: scrolled ? "50px" : "70px",
               minWidth: "unset",
               transition: "all 0.3s ease",
@@ -174,7 +174,7 @@ const Landing = () => {
               sx={{
                 color: "#FFF",
                 mb: 2,
-                fontSize: { xs: "3rem", md: "5rem" },
+                fontSize: { xs: "2.5rem", md: "5rem" },
               }}
             >
               {t("dest4")}
@@ -201,7 +201,7 @@ const Landing = () => {
                 sx={{
                   width: { xs: "140px", md: "200px" },
                   padding: "10px 20px",
-                  fontSize: "24px",
+                  fontSize: { xs: "16px", md: "24px" },
                   background: "#c09660",
                   color: "#fff",
                   borderRadius: "40px",
@@ -215,7 +215,7 @@ const Landing = () => {
                 sx={{
                   width: { xs: "140px", md: "200px" },
                   padding: "10px 20px",
-                  fontSize: "24px",
+                  fontSize: { xs: "16px", md: "24px" },
                   background: "#c09660",
                   color: "#fff",
                   borderRadius: "40px",
