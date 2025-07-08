@@ -5,6 +5,7 @@ import backgroundLanding from "../../assets/image/landing.webp";
 import { useTranslation } from "react-i18next";
 import { motion, cubicBezier } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { TabTitle } from "../../components/Title";
 
 const Landing = () => {
   const [t, i18n] = useTranslation();
@@ -26,6 +27,8 @@ const Landing = () => {
   const [mouseEntered, setMouseEntered] = useState(false);
 
   const showAnimation = inView || mouseEntered;
+
+  TabTitle(t("title"));
 
   return (
     <div

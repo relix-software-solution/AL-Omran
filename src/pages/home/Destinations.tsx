@@ -30,7 +30,6 @@ const images = [
     src: image3,
     label: "The project spans a total area of 688,500 square meters",
     labelAr: "يبلغ إجمالي مساحة المشروع 688,500 متر مربع",
-    hasButton: true, // إشعار بوجود زر بالصورة الثالثة فقط
   },
 ];
 
@@ -175,9 +174,8 @@ const Destinations = () => {
                     left: 16,
                     right: 16,
                     color: "#fff",
-                    opacity: index === 2 ? 1 : 0,
-                    transform:
-                      index === 2 ? "translateY(0)" : "translateY(10px)",
+                    opacity: 0,
+                    transform: "translateY(10px)",
                     transition: "all 0.3s ease-in-out",
                   }}
                 >

@@ -203,7 +203,7 @@ const Footer = () => {
             sx={{
               width: "90%",
               margin: "auto",
-              display: { xs: "block", md: "flex" },
+              display: { xs: "block", sm: "flex" },
               justifyContent: "space-between",
             }}
           >
@@ -236,7 +236,8 @@ const Footer = () => {
               sx={{
                 width: { xs: "100%", md: "40%" },
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: { xs: "normal", sm: "space-between" },
+                overflow: "hidden",
               }}
             >
               <motion.div
@@ -313,7 +314,11 @@ const Footer = () => {
               >
                 <Typography
                   component="h5"
-                  sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                  sx={{
+                    fontSize: "16",
+                    color: "#eadccc",
+                    margin: "20px 0",
+                  }}
                 >
                   {t("footer5")}
                 </Typography>

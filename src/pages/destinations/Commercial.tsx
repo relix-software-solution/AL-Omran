@@ -7,13 +7,16 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import image1 from "../../assets/image/1.webp";
-import image2 from "../../assets/image/2.webp";
-import image3 from "../../assets/image/3.webp";
+import image1 from "../../assets/image/7.webp";
+import image2 from "../../assets/image/8.webp";
+import image3 from "../../assets/image/9.webp";
+import image4 from "../../assets/image/2.webp";
+import image5 from "../../assets/image/3.webp";
+import image6 from "../../assets/image/6.webp";
 import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
 
 const textFieldSx = {
   "& .MuiOutlinedInput-root": {
@@ -43,7 +46,7 @@ const textFieldSx = {
   },
 };
 
-const images = [image1, image2, image3];
+const images = [image1, image2, image3, image4, image5, image6];
 
 const Commercial = () => {
   const [current, setCurrent] = useState(0);
@@ -61,7 +64,7 @@ const Commercial = () => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
@@ -84,14 +87,31 @@ const Commercial = () => {
             alignItems: "center",
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: "40px", md: "72px" },
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 50,
             }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
           >
-            {t("dest9")}
-          </Typography>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: "40px", md: "72px" },
+              }}
+            >
+              {t("dest9")}
+            </Typography>
+          </motion.div>
         </Box>
 
         {/* Slideshow Container */}
@@ -177,9 +197,14 @@ const Commercial = () => {
               "&:hover": {
                 bgcolor: "#b1864e",
               },
+              "& .MuiButton-startIcon": {
+                margin: 0, // ✅ هذا يمنع الإزاحة
+              },
             }}
           >
-            <ArrowBackIosIcon />
+            <ArrowForwardIosIcon
+              sx={{ paddingLeft: "3px", transform: "rotate(180deg)" }}
+            />
           </IconButton>
 
           {/* Next Button */}
@@ -206,102 +231,153 @@ const Commercial = () => {
         </Box>
         <div dir={t("dir")}>
           <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
-            <Typography
-              variant="h2"
-              gutterBottom
-              sx={{
-                textAlign: "center",
-                mb: 5,
-                color: "#193a51",
-                fontSize: { xs: "32px", md: "72px" },
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 50,
               }}
-            >
-              {t("dest11")}
-            </Typography>
-            <Typography
-              variant="h4"
-              gutterBottom
-              sx={{
-                textAlign: "center",
-                mb: 5,
-                color: "#193a51",
-                fontSize: { xs: "20px", md: "30px" },
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.2,
+                  duration: 0.8,
+                  ease: [0.75, 0.01, 0.31, 1],
+                },
               }}
+              viewport={{ once: false, amount: 0.5 }}
             >
-              - {t("dest12")} -
-            </Typography>
-
-            <Box
-              sx={{ width: { xs: "100%", md: "60%" }, margin: "0 auto 30px" }}
-            >
-              <TextField
-                label={t("contact13")}
-                placeholder={t("contact14")}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircleIcon sx={{ color: "#193a51" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={textFieldSx}
-              />
-            </Box>
-            <Box
-              sx={{
-                width: { xs: "100%", md: "60%" },
-                margin: "auto",
-                display: { xs: "block", md: "flex" },
-                justifyContent: "space-between",
-              }}
-            >
-              <Box
+              <Typography
+                variant="h2"
+                gutterBottom
                 sx={{
-                  width: { xs: "100%", md: "48%" },
-                  marginBottom: { xs: "30px", md: "0" },
+                  textAlign: "center",
+                  mb: 5,
+                  color: "#193a51",
+                  fontSize: { xs: "32px", md: "72px" },
                 }}
               >
-                <TextField
-                  label={t("contact15")}
-                  placeholder={t("contact16")}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#193a51" }} />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={textFieldSx}
-                />
-              </Box>
-              <Box sx={{ width: { xs: "100%", md: "48%" } }}>
-                <TextField
-                  label={t("contact8")}
-                  placeholder={t("contact9")}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#193a51" }} />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={textFieldSx}
-                />
-              </Box>
-            </Box>
-            <Button
-              sx={{
-                width: { xs: "140px", md: "200px" },
-                padding: "10px 20px",
-                fontSize: "16px",
-                background: "#c09660",
-                color: "#fff",
-                borderRadius: "40px",
-                margin: "30px auto 10px",
+                {t("dest11")}
+              </Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 50,
               }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                  duration: 0.8,
+                  ease: [0.75, 0.01, 0.31, 1],
+                },
+              }}
+              viewport={{ once: false, amount: 0.5 }}
             >
-              {t("contact12")}
-            </Button>
+              <Typography
+                variant="h4"
+                gutterBottom
+                sx={{
+                  textAlign: "center",
+                  mb: 5,
+                  color: "#193a51",
+                  fontSize: { xs: "20px", md: "30px" },
+                }}
+              >
+                - {t("dest12")} -
+              </Typography>
+            </motion.div>
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.8,
+                  duration: 0.8,
+                  ease: [0.75, 0.01, 0.31, 1],
+                },
+              }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              <Box
+                sx={{ width: { xs: "100%", md: "60%" }, margin: "0 auto 30px" }}
+              >
+                <TextField
+                  label={t("contact13")}
+                  placeholder={t("contact14")}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircleIcon sx={{ color: "#193a51" }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                  sx={textFieldSx}
+                />
+              </Box>
+              <Box
+                sx={{
+                  width: { xs: "100%", md: "60%" },
+                  margin: "auto",
+                  display: { xs: "block", md: "flex" },
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: { xs: "100%", md: "48%" },
+                    marginBottom: { xs: "30px", md: "0" },
+                  }}
+                >
+                  <TextField
+                    label={t("contact15")}
+                    placeholder={t("contact16")}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircleIcon sx={{ color: "#193a51" }} />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={textFieldSx}
+                  />
+                </Box>
+                <Box sx={{ width: { xs: "100%", md: "48%" } }}>
+                  <TextField
+                    label={t("contact8")}
+                    placeholder={t("contact9")}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircleIcon sx={{ color: "#193a51" }} />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={textFieldSx}
+                  />
+                </Box>
+              </Box>
+              <Button
+                sx={{
+                  width: { xs: "140px", md: "200px" },
+                  padding: "10px 20px",
+                  fontSize: "16px",
+                  background: "#c09660",
+                  color: "#fff",
+                  borderRadius: "40px",
+                  margin: "30px auto 10px",
+                }}
+              >
+                {t("contact12")}
+              </Button>
+            </motion.div>
           </Box>
         </div>
       </div>

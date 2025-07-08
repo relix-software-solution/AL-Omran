@@ -2,17 +2,102 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import backgroundLanding from "../../assets/image/12.webp";
 import { useTranslation } from "react-i18next";
-import { Button } from "@mui/material";
+import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { HashLink as Link } from "react-router-hash-link";
+import { useEffect, useState } from "react";
+import GetAppIcon from "@mui/icons-material/GetApp";
+import { motion } from "motion/react";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { TabTitle } from "../../components/Title";
 
 const Landing = () => {
-  /* -------------------------------------------------------------------------- */
-  /*                                 Translation                                */
-  /* -------------------------------------------------------------------------- */
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
 
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+
+  // Scroll detection state
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  TabTitle(t("title_dest"));
   return (
     <div dir={t("dir")} id="dest">
+      {/* الزرين الثابتين */}
+      <Box
+        sx={{
+          position: "fixed",
+          top: "50%",
+          transform: "translateY(-50%)",
+          left: t("dir") === "rtl" ? "20px" : "auto",
+          right: t("dir") === "rtl" ? "auto" : "20px",
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          alignItems: "center",
+        }}
+      >
+        <Button
+          variant="contained"
+          startIcon={scrolled ? <GetAppIcon /> : undefined}
+          sx={{
+            backgroundColor: "#c09660",
+            color: "#fff",
+            borderRadius: "40px",
+            width: scrolled ? "50px" : { xs: "160px", md: "300px" },
+            fontSize: { xs: "20px", md: "24px" },
+            height: scrolled ? "50px" : "70px",
+            minWidth: "unset",
+            transition: "all 0.3s ease",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            px: scrolled ? 0 : 3,
+            justifyContent: "center",
+            "& .MuiButton-startIcon": {
+              margin: 0, // ✅ هذا يمنع الإزاحة
+            },
+          }}
+        >
+          {!scrolled && t("dest13")}
+        </Button>
+
+        <Link to="/destinations#res">
+          <Button
+            variant="contained"
+            startIcon={scrolled ? <AssignmentIcon /> : undefined}
+            sx={{
+              backgroundColor: "#c09660",
+              color: "#fff",
+              borderRadius: "40px",
+              width: scrolled ? "50px" : { xs: "160px", md: "300px" },
+              fontSize: { xs: "20px", md: "24px" },
+              height: scrolled ? "50px" : "70px",
+              minWidth: "unset",
+              transition: "all 0.3s ease",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              px: scrolled ? 0 : 3,
+              justifyContent: "center",
+              "& .MuiButton-startIcon": {
+                margin: 0, // ✅ هذا يمنع الإزاحة
+              },
+            }}
+          >
+            {!scrolled && t("dest14")}
+          </Button>
+        </Link>
+      </Box>
+
+      {/* خلفية الهبوط */}
       <Box
         sx={{
           width: "100%",
@@ -43,7 +128,7 @@ const Landing = () => {
           loading="lazy"
         />
 
-        {/* overlay gradient من الأسفل */}
+        {/* التدرج السفلي */}
         <Box
           sx={{
             position: "absolute",
@@ -56,7 +141,7 @@ const Landing = () => {
           }}
         />
 
-        {/* الكتابة */}
+        {/* النص والأزرار */}
         <Box
           sx={{
             position: "relative",
@@ -66,42 +151,81 @@ const Landing = () => {
             maxWidth: "800px",
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{ color: "#FFF", mb: 2, fontSize: { xs: "3rem", md: "5rem" } }}
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+              y: isMdUp ? 0 : 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
           >
-            {t("dest4")}
-          </Typography>
-          <Link to="/destinations#res">
-            {" "}
-            <Button
+            <Typography
+              variant="h2"
               sx={{
-                width: { xs: "140px", md: "200px" },
-                padding: "10px 20px",
-                fontSize: "24px",
-                background: "#c09660",
-                color: "#fff",
-                borderRadius: "40px",
+                color: "#FFF",
+                mb: 2,
+                fontSize: { xs: "3rem", md: "5rem" },
               }}
             >
-              {t("dest5")}
-            </Button>
-          </Link>
-          <Link to="/destinations#comm">
-            <Button
-              sx={{
-                width: { xs: "140px", md: "200px" },
-                padding: "10px 20px",
-                fontSize: "24px",
-                background: "#c09660",
-                color: "#fff",
-                borderRadius: "40px",
-                margin: "0 10px",
-              }}
-            >
-              {t("dest6")}
-            </Button>
-          </Link>
+              {t("dest4")}
+            </Typography>
+          </motion.div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 50,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.75, 0.01, 0.31, 1],
+              },
+            }}
+            viewport={{ once: false, amount: 0.5 }}
+          >
+            <Link to="/destinations#res">
+              <Button
+                sx={{
+                  width: { xs: "140px", md: "200px" },
+                  padding: "10px 20px",
+                  fontSize: "24px",
+                  background: "#c09660",
+                  color: "#fff",
+                  borderRadius: "40px",
+                }}
+              >
+                {t("dest5")}
+              </Button>
+            </Link>
+            <Link to="/destinations#comm">
+              <Button
+                sx={{
+                  width: { xs: "140px", md: "200px" },
+                  padding: "10px 20px",
+                  fontSize: "24px",
+                  background: "#c09660",
+                  color: "#fff",
+                  borderRadius: "40px",
+                  margin: "0 10px",
+                }}
+              >
+                {t("dest6")}
+              </Button>
+            </Link>
+          </motion.div>
         </Box>
       </Box>
     </div>

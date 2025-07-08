@@ -105,7 +105,10 @@ const AboutUs = () => {
                 p: 2,
                 width: "90%",
                 marginBottom: "20px",
-                textAlign: { xs: "left", md: "center" },
+                textAlign: {
+                  xs: i18n.language === "ar" ? "right" : "left",
+                  md: "center",
+                },
               }}
             >
               <motion.div
