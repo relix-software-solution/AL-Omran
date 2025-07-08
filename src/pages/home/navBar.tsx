@@ -11,12 +11,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import Typography from "@mui/material/Typography";
 import LanguageIcon from "@mui/icons-material/Language";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import logo from "../../assets/image/logo.png";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -85,8 +85,6 @@ export default function AppAppBar() {
   const [t, i18n] = useTranslation();
 
   const location = useLocation();
-  const titleKey =
-    location.pathname === "/destinations" ? "title_dest" : "title";
 
   return (
     <HideOnScroll>
@@ -117,15 +115,11 @@ export default function AppAppBar() {
                 }}
               >
                 <Box>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "24px", md: "36px" },
-                      padding: "0px 20px",
-                      color: "#eadccc",
-                    }}
-                  >
-                    {t(titleKey)}
-                  </Typography>
+                  <Box
+                    component="img"
+                    src={logo}
+                    sx={{ width: "40px", padding: "10px 30px", margin: "auto" }}
+                  />
                 </Box>
               </Box>
               <Box

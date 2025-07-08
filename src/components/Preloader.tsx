@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import logo1 from "../assets/image/logo1.png";
 import gsap from "gsap";
+import { Box } from "@mui/material";
 
 const Preloader = () => {
   const preloaderRef = useRef<HTMLDivElement>(null);
@@ -61,9 +63,7 @@ const Preloader = () => {
       }}
     >
       <div ref={textRef} style={{ display: "flex", gap: "6px" }}>
-        {"Al-Omran".split("").map((char, i) => (
-          <span key={i}>{char}</span>
-        ))}
+        <Box component="img" src={logo1} sx={{ width: "300px" }} />
       </div>
     </div>
   );
