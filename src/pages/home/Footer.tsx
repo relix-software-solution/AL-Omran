@@ -6,6 +6,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
+import logo1 from "../../assets/image/logo1.png";
 
 const Footer = () => {
   /* -------------------------------------------------------------------------- */
@@ -47,17 +48,16 @@ const Footer = () => {
                 }}
                 viewport={{ once: false, amount: 0.5 }}
               >
-                <Typography
-                  component="span"
-                  sx={{ fontSize: "36px", color: "#eadccc" }}
-                >
-                  {t("title")}
-                </Typography>
+                <Box
+                  component="img"
+                  src={logo1}
+                  sx={{ width: "300px", margin: "auto" }}
+                />
                 <Typography
                   component="h4"
                   sx={{
                     fontSize: "16px",
-                    color: "#fff",
+                    color: "#eadccc",
                     maxWidth: { xs: "300px", md: "400px" },
                     margin: "20px 0",
                   }}
