@@ -88,24 +88,24 @@ const Landing = () => {
             maxWidth: "800px",
           }}
         >
-          <motion.div
+          {/* <motion.div
             key={showAnimation ? "visible-0" : "hidden-0"}
             initial={{ opacity: 0, x: getDirection }}
             animate={showAnimation ? { opacity: 1, x: 0 } : {}}
             transition={{ ...transition, delay: baseDelay + 0 }}
-          >
-            <Typography variant="h3" sx={{ color: "#eadccc", mb: 2 }}>
+          > */}
+          {/* <Typography variant="h3" sx={{ color: "#eadccc", mb: 2 }}>
               {t("title")}
-            </Typography>
-          </motion.div>
+            </Typography> */}
+          {/* </motion.div> */}
 
-          <motion.div
+          {/* <motion.div
             key={showAnimation ? "visible-1" : "hidden-1"}
             initial={{ opacity: 0, x: getDirection }}
             animate={showAnimation ? { opacity: 1, x: 0 } : {}}
             transition={{ ...transition, delay: baseDelay + 0.2 }}
-          >
-            <Typography
+          > */}
+          {/* <Typography
               variant="h3"
               sx={{
                 mb: 2,
@@ -113,22 +113,22 @@ const Landing = () => {
               }}
             >
               {t("contentLan")}
-            </Typography>
-          </motion.div>
+            </Typography> */}
+          {/* </motion.div> */}
 
-          <motion.div
+          {/* <motion.div
             key={showAnimation ? "visible-2" : "hidden-2"}
             initial={{ opacity: 0, x: getDirection }}
             animate={showAnimation ? { opacity: 1, x: 0 } : {}}
             transition={{ ...transition, delay: baseDelay + 0.4 }}
-          >
-            <Typography
+          > */}
+          {/* <Typography
               variant="body1"
               sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}
             >
               {t("contentLan2")}
-            </Typography>
-          </motion.div>
+            </Typography> */}
+          {/* </motion.div> */}
         </Box>
       </Box>
     </div>
