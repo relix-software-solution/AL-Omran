@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import landingVideo from "../../assets/1.mp4";
+import landingPoster from "../../assets/image/landing.webp";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
@@ -38,12 +39,14 @@ const Landing = () => {
           loop
           muted
           playsInline
+          poster={landingPoster}
           sx={{
             position: "absolute",
             width: "100%",
             height: "100%",
             objectFit: "cover",
             zIndex: 0,
+            backgroundColor: "#000", // لتجنب الوميض الأبيض
           }}
         />
 
