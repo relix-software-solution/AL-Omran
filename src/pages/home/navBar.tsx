@@ -118,7 +118,11 @@ export default function AppAppBar() {
                   <Box
                     component="img"
                     src={logo}
-                    sx={{ width: "90px", padding: "10px 30px", margin: "auto" }}
+                    sx={{
+                      width: "90px",
+                      padding: "10px 30px",
+                      margin: "10px 0 auto",
+                    }}
                   />
                 </Box>
               </Box>

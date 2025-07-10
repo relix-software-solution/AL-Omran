@@ -101,7 +101,7 @@ const AboutUs = () => {
           >
             <Box
               sx={{
-                color: "#000",
+                color: "193a51",
                 p: 2,
                 width: "90%",
                 marginBottom: "20px",
@@ -133,7 +133,7 @@ const AboutUs = () => {
                   component="h1"
                   sx={{
                     fontSize: "32px",
-                    color: "#000",
+                    color: "#193a51",
                   }}
                 >
                   {t("about1")}
@@ -142,7 +142,7 @@ const AboutUs = () => {
                   component="span"
                   sx={{
                     fontSize: "16px",
-                    color: "#000",
+                    color: "#193a51",
                   }}
                 >
                   {t("about2")}
