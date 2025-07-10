@@ -6,7 +6,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
-import logo1 from "../../assets/image/logo1.png";
+import logo1 from "../../assets/image/logo1 - Copy.png";
 
 const Footer = () => {
   /* -------------------------------------------------------------------------- */
