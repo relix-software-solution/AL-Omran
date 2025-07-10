@@ -1,32 +1,32 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import backgroundLanding from "../../assets/image/landing.webp";
 import { useTranslation } from "react-i18next";
-import { motion, cubicBezier } from "framer-motion";
+// import { cubicBezier } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
 
 const Landing = () => {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
 
-  const getDirection = i18n.language === "ar" ? 100 : -100;
+  // const getDirection = i18n.language === "ar" ? 100 : -100;
 
-  const baseDelay = 0.5; // تأخير 2 ثانية قبل بداية الأنيميشن
+  // const baseDelay = 0.5; // تأخير 2 ثانية قبل بداية الأنيميشن
 
-  const transition = {
-    duration: 0.8,
-    ease: cubicBezier(0.75, 0.01, 0.31, 1),
-  };
+  // const transition = {
+  //   duration: 0.8,
+  //   ease: cubicBezier(0.75, 0.01, 0.31, 1),
+  // };
 
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
-  const [mouseEntered, setMouseEntered] = useState(false);
+  // const [setMouseEntered] = useState(false);
 
-  const showAnimation = inView || mouseEntered;
+  // const showAnimation = inView || mouseEntered;
 
   TabTitle(t("title"));
 
@@ -35,8 +35,8 @@ const Landing = () => {
       dir={t("dir")}
       id="home"
       ref={ref}
-      onMouseEnter={() => setMouseEntered(true)}
-      onMouseLeave={() => setMouseEntered(false)}
+      // onMouseEnter={() => setMouseEntered(true)}
+      // onMouseLeave={() => setMouseEntered(false)}
     >
       <Box
         sx={{
