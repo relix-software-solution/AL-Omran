@@ -73,10 +73,34 @@ const Footer = () => {
                     gap: "10px",
                   }}
                 >
-                  <XIcon />
-                  <FacebookIcon />
-                  <InstagramIcon />
-                  <WhatsAppIcon />
+                  <XIcon
+                    sx={{
+                      "&:hover": {
+                        color: "#ffffff",
+                      },
+                    }}
+                  />
+                  <FacebookIcon
+                    sx={{
+                      "&:hover": {
+                        color: "#ffffff",
+                      },
+                    }}
+                  />
+                  <InstagramIcon
+                    sx={{
+                      "&:hover": {
+                        color: "#ffffff",
+                      },
+                    }}
+                  />
+                  <WhatsAppIcon
+                    sx={{
+                      "&:hover": {
+                        color: "#ffffff",
+                      },
+                    }}
+                  />
                 </Typography>
               </motion.div>
             </Box>
@@ -114,6 +138,9 @@ const Footer = () => {
                         fontSize: "16",
                         color: "#eadccc",
                         margin: "20px 0",
+                        "&:hover": {
+                          color: "#ffffff",
+                        },
                       }}
                     >
                       {t("home")}
@@ -127,6 +154,9 @@ const Footer = () => {
                         fontSize: "16",
                         color: "#eadccc",
                         margin: "20px 0",
+                        "&:hover": {
+                          color: "#ffffff",
+                        },
                       }}
                     >
                       {t("aboutUs")}
@@ -140,6 +170,9 @@ const Footer = () => {
                         fontSize: "16",
                         color: "#eadccc",
                         margin: "20px 0",
+                        "&:hover": {
+                          color: "#ffffff",
+                        },
                       }}
                     >
                       {t("services")}
@@ -172,6 +205,9 @@ const Footer = () => {
                         fontSize: "16",
                         color: "#eadccc",
                         margin: "20px 0",
+                        "&:hover": {
+                          color: "#ffffff",
+                        },
                       }}
                     >
                       {t("footer6")}
@@ -232,98 +268,51 @@ const Footer = () => {
                 </Typography>
               </motion.div>
             </Box>
-            <Box
-              sx={{
-                width: { xs: "100%", md: "40%" },
-                display: "flex",
-                justifyContent: { xs: "normal", sm: "space-between" },
-                overflow: "hidden",
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
               }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.2,
+                  duration: 0.8,
+                  ease: [0.75, 0.01, 0.31, 1],
+                },
+              }}
+              viewport={{ once: false, amount: 0.5 }}
             >
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
+              <Typography
+                component="h5"
+                sx={{
+                  fontSize: "16px",
+                  color: "#eadccc",
+                  margin: "20px 0",
                 }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: 0.2,
-                    duration: 0.8,
-                    ease: [0.75, 0.01, 0.31, 1],
-                  },
-                }}
-                viewport={{ once: false, amount: 0.5 }}
               >
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontSize: "16",
+                {t("footer5")}{" "}
+                <a
+                  href="https://relix-ten.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
                     color: "#eadccc",
-                    margin: "20px 0",
-                    display: { xs: "none", md: "block" },
+                    textDecoration: "none",
+                    transition: "color 0.3s ease",
                   }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "#ffffff")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "#eadccc")
+                  }
                 >
-                  {t("footer3")}
-                </Typography>
-              </motion.div>
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: 0.2,
-                    duration: 0.8,
-                    ease: [0.75, 0.01, 0.31, 1],
-                  },
-                }}
-                viewport={{ once: false, amount: 0.5 }}
-              >
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontSize: "16",
-                    color: "#eadccc",
-                    margin: "20px 0",
-                    display: { xs: "none", md: "block" },
-                  }}
-                >
-                  {t("footer4")}
-                </Typography>
-              </motion.div>
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: 0.2,
-                    duration: 0.8,
-                    ease: [0.75, 0.01, 0.31, 1],
-                  },
-                }}
-                viewport={{ once: false, amount: 0.5 }}
-              >
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontSize: "16",
-                    color: "#eadccc",
-                    margin: "20px 0",
-                  }}
-                >
-                  {t("footer5")}
-                </Typography>
-              </motion.div>
-            </Box>
+                  Relix
+                </a>
+              </Typography>
+            </motion.div>
           </Box>
         </Box>
       </div>

@@ -6,10 +6,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import image1 from "../../assets/image/7.webp";
+import video1 from "../../assets/3.mp4";
 import image2 from "../../assets/image/8.webp";
 import image3 from "../../assets/image/9.webp";
 import image4 from "../../assets/image/2.webp";
@@ -46,7 +46,32 @@ const textFieldSx = {
   },
 };
 
-const images = [image1, image2, image3, image4, image5, image6];
+const images = [
+  {
+    type: "video",
+    src: video1, // أو import محلي للفيديو
+  },
+  {
+    type: "image",
+    src: image2,
+  },
+  {
+    type: "image",
+    src: image3,
+  },
+  {
+    type: "image",
+    src: image4,
+  },
+  {
+    type: "image",
+    src: image5,
+  },
+  {
+    type: "image",
+    src: image6,
+  },
+];
 
 const Commercial = () => {
   const [current, setCurrent] = useState(0);
@@ -59,12 +84,12 @@ const Commercial = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [images.length]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     handleNext();
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, [images.length]);
 
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
@@ -131,19 +156,43 @@ const Commercial = () => {
               height: "100%",
             }}
           >
-            {images.map((img, index) => (
+            {images.map((item, index) => (
               <Box
                 key={index}
-                component="img"
-                src={img}
-                alt={`slide-${index}`}
                 sx={{
                   width: "100vw",
                   height: "100%",
-                  objectFit: "cover",
                   flexShrink: 0,
                 }}
-              />
+              >
+                {item.type === "video" ? (
+                  <Box
+                    component="video"
+                    src={item.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : (
+                  <Box
+                    component="img"
+                    src={item.src}
+                    alt={`slide-${index}`}
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    loading="lazy"
+                  />
+                )}
+              </Box>
             ))}
           </Box>
 

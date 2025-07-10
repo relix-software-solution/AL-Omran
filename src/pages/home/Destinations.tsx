@@ -2,7 +2,7 @@ import { HashLink as Link } from "react-router-hash-link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
-import image1 from "../../assets/image/1.webp";
+import video1 from "../../assets/2.mp4";
 import image2 from "../../assets/image/2.webp";
 import image3 from "../../assets/image/3.webp";
 import Button from "@mui/material/Button";
@@ -14,19 +14,22 @@ import { motion } from "motion/react";
 
 const images = [
   {
-    src: image1,
+    type: "video",
+    src: video1, // استبدله برابطك أو import فيديو محلي
     label:
       "As architects and urban planners engaged in the reconstruction of the city of Homs, we are fully aware of the profound responsibility of shaping spaces that not only restore the physical fabric of the city...",
     labelAr:
       "باعتبارنا مهندسين معماريين ومخططين حضريين مشاركين في إعادة بناء مدينة حمص، فإننا ندرك تمامًا المسؤولية العميقة المتمثلة في تشكيل المساحات التي لا تعمل فقط على استعادة النسيج المادي للمدينة...",
   },
   {
+    type: "image",
     src: image2,
     label:
       "It includes more than 4,000 residential units and provides over 10,000 job opportunities.",
     labelAr: "يضم أكثر من 4000 وحدة سكنية ويوفر أكثر من 10000 فرصة عمل.",
   },
   {
+    type: "image",
     src: image3,
     label: "The project spans a total area of 688,500 square meters",
     labelAr: "يبلغ إجمالي مساحة المشروع 688,500 متر مربع",
@@ -123,7 +126,7 @@ const Destinations = () => {
                   overflow: "hidden",
                   cursor: "pointer",
                   "&:hover .image": {
-                    transform: "scale(1.05)", // تكبير ناعم
+                    transform: "scale(1.05)",
                   },
                   "&:hover .overlay": {
                     opacity: 0.5,
@@ -134,21 +137,38 @@ const Destinations = () => {
                   },
                 }}
               >
-                {/* الصورة */}
-
-                <Box
-                  component="img"
-                  className="image"
-                  src={img.src}
-                  alt={`Image ${index + 1}`}
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    transition: "transform 0.3s ease", // التكبير الناعم
-                  }}
-                  loading="lazy"
-                />
+                {/* صورة أو فيديو حسب النوع */}
+                {img.type === "video" ? (
+                  <Box
+                    component="video"
+                    className="image"
+                    src={img.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      transition: "transform 0.3s ease",
+                    }}
+                  />
+                ) : (
+                  <Box
+                    component="img"
+                    className="image"
+                    src={img.src}
+                    alt={`Image ${index + 1}`}
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      transition: "transform 0.3s ease",
+                    }}
+                    loading="lazy"
+                  />
+                )}
 
                 {/* Overlay */}
                 <Box
@@ -179,25 +199,9 @@ const Destinations = () => {
                     transition: "all 0.3s ease-in-out",
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      flexWrap: "wrap",
-                      gap: 1,
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        flex: 1,
-                      }}
-                    >
-                      {i18n.language === "ar" ? img.labelAr : img.label}
-                    </Typography>
-                  </Box>
+                  <Typography variant="body1">
+                    {i18n.language === "ar" ? img.labelAr : img.label}
+                  </Typography>
                 </Box>
               </Box>
             ))}
