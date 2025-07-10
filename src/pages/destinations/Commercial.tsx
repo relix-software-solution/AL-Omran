@@ -10,6 +10,7 @@ import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import video1 from "../../assets/3.mp4";
+import videoPoster from "../../assets/image/05.webp"; // استورد صورة البوستر المناسبة للفيديو
 import image2 from "../../assets/image/8.webp";
 import image3 from "../../assets/image/9.webp";
 import image4 from "../../assets/image/2.webp";
@@ -49,7 +50,8 @@ const textFieldSx = {
 const images = [
   {
     type: "video",
-    src: video1, // أو import محلي للفيديو
+    src: video1,
+    poster: videoPoster, // إضافة بوستر الفيديو هنا
   },
   {
     type: "image",
@@ -84,13 +86,6 @@ const Commercial = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     handleNext();
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, [images.length]);
-
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
@@ -113,10 +108,7 @@ const Commercial = () => {
           }}
         >
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{
               opacity: 1,
               y: 0,
@@ -130,9 +122,7 @@ const Commercial = () => {
           >
             <Typography
               variant="h2"
-              sx={{
-                fontSize: { xs: "40px", md: "72px" },
-              }}
+              sx={{ fontSize: { xs: "40px", md: "72px" } }}
             >
               {t("dest9")}
             </Typography>
@@ -159,36 +149,25 @@ const Commercial = () => {
             {images.map((item, index) => (
               <Box
                 key={index}
-                sx={{
-                  width: "100vw",
-                  height: "100%",
-                  flexShrink: 0,
-                }}
+                sx={{ width: "100vw", height: "100%", flexShrink: 0 }}
               >
                 {item.type === "video" ? (
                   <Box
                     component="video"
                     src={item.src}
+                    poster={item.poster} // إضافة صورة البوستر هنا
                     autoPlay
                     loop
                     muted
                     playsInline
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
+                    sx={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
                 ) : (
                   <Box
                     component="img"
                     src={item.src}
                     alt={`slide-${index}`}
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
+                    sx={{ width: "100%", height: "100%", objectFit: "cover" }}
                     loading="lazy"
                   />
                 )}
@@ -243,12 +222,7 @@ const Commercial = () => {
               height: { xs: 45, md: 56 },
               borderRadius: "50%",
               zIndex: 2,
-              "&:hover": {
-                bgcolor: "#b1864e",
-              },
-              "& .MuiButton-startIcon": {
-                margin: 0, // ✅ هذا يمنع الإزاحة
-              },
+              "&:hover": { bgcolor: "#b1864e" },
             }}
           >
             <ArrowForwardIosIcon
@@ -270,21 +244,18 @@ const Commercial = () => {
               height: { xs: 45, md: 56 },
               borderRadius: "50%",
               zIndex: 2,
-              "&:hover": {
-                bgcolor: "#b1864e",
-              },
+              "&:hover": { bgcolor: "#b1864e" },
             }}
           >
             <ArrowForwardIosIcon />
           </IconButton>
         </Box>
+
+        {/* Contact / Input Section */}
         <div dir={t("dir")}>
           <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
                 y: 0,
@@ -311,10 +282,7 @@ const Commercial = () => {
             </motion.div>
 
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
                 y: 0,
@@ -339,11 +307,9 @@ const Commercial = () => {
                 - {t("dest12")} -
               </Typography>
             </motion.div>
+
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
                 y: 0,
@@ -382,7 +348,7 @@ const Commercial = () => {
                 <Box
                   sx={{
                     width: { xs: "100%", md: "48%" },
-                    marginBottom: { xs: "30px", md: "0" },
+                    mb: { xs: 3, md: 0 },
                   }}
                 >
                   <TextField
