@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import video1 from "../../assets/3.mp4";
@@ -18,6 +18,7 @@ import image5 from "../../assets/image/3.webp";
 import image6 from "../../assets/image/6.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
+import Swal from "sweetalert2";
 
 const textFieldSx = {
   "& .MuiOutlinedInput-root": {
@@ -89,8 +90,46 @@ const Commercial = () => {
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
 
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    formData.append("access_key", "d6ec67ab-7c56-428a-b250-0f3d36627fec");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success && i18n.language === "en") {
+      Swal.fire({
+        title: "Done!",
+        text: "Your message has been sended",
+        icon: "success",
+      });
+      // setResult("Form Submitted Successfully");
+      event.currentTarget.reset();
+    } else {
+      console.log("Error", data);
+      // setResult(data.message);
+    }
+    if (data.success && i18n.language === "ar") {
+      Swal.fire({
+        title: "تم الإرسال",
+        text: "لقد تم إرسال رسالتك بنجاح",
+        icon: "success",
+      });
+      // setResult("Form Submitted Successfully");
+      event.currentTarget.reset();
+    } else {
+      console.log("Error", data);
+      // setResult(data.message);
+    }
+  };
   return (
     <>
       <div id="comm">
@@ -253,7 +292,11 @@ const Commercial = () => {
 
         {/* Contact / Input Section */}
         <div dir={t("dir")}>
-          <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
+          <Box
+            component="form"
+            onSubmit={onSubmit}
+            sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{
@@ -327,6 +370,7 @@ const Commercial = () => {
                 <TextField
                   label={t("contact13")}
                   placeholder={t("contact14")}
+                  name="name"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -354,6 +398,7 @@ const Commercial = () => {
                   <TextField
                     label={t("contact15")}
                     placeholder={t("contact16")}
+                    name="message"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -368,6 +413,7 @@ const Commercial = () => {
                   <TextField
                     label={t("contact8")}
                     placeholder={t("contact9")}
+                    name="email"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -380,6 +426,8 @@ const Commercial = () => {
                 </Box>
               </Box>
               <Button
+                type="submit"
+                variant="contained"
                 sx={{
                   width: { xs: "140px", md: "200px" },
                   padding: "10px 20px",

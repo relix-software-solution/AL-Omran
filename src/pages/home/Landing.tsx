@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
-import landingVideo from "../../assets/1.mp4";
-import landingPoster from "../../assets/image/landing.webp";
+import landingPoster from "../../assets/image/Landing.webp";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
@@ -33,13 +32,9 @@ const Landing = () => {
         }}
       >
         <Box
-          component="video"
-          src={landingVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={landingPoster}
+          component="img"
+          src={landingPoster}
+          alt="Landing"
           sx={{
             position: "absolute",
             width: "100%",

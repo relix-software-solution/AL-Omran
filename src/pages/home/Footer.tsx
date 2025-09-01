@@ -1,8 +1,7 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import XIcon from "@mui/icons-material/X";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
@@ -73,34 +72,59 @@ const Footer = () => {
                     gap: "10px",
                   }}
                 >
-                  <XIcon
-                    sx={{
-                      "&:hover": {
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61578912765891&mibextid=ZbWKwL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FacebookIcon
+                      sx={{
+                        color: "#ffffff", // اللون الافتراضي أبيض
+                        transition:
+                          "transform 0.2s ease-in-out, opacity 0.2s ease-in-out",
+                        "&:hover": {
+                          opacity: 0.7,
+                          transform: "scale(0.97)",
+                        },
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/al.omranrealestate?igsh=MWhoOXg4MzhjZ284Mw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <InstagramIcon
+                      sx={{
                         color: "#ffffff",
-                      },
-                    }}
-                  />
-                  <FacebookIcon
-                    sx={{
-                      "&:hover": {
+                        transition:
+                          "transform 0.2s ease-in-out, opacity 0.2s ease-in-out",
+                        "&:hover": {
+                          opacity: 0.7,
+                          transform: "scale(0.97)",
+                        },
+                      }}
+                    />
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/in/alomran-salam-66b997379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkedInIcon
+                      sx={{
                         color: "#ffffff",
-                      },
-                    }}
-                  />
-                  <InstagramIcon
-                    sx={{
-                      "&:hover": {
-                        color: "#ffffff",
-                      },
-                    }}
-                  />
-                  <WhatsAppIcon
-                    sx={{
-                      "&:hover": {
-                        color: "#ffffff",
-                      },
-                    }}
-                  />
+                        transition:
+                          "transform 0.2s ease-in-out, opacity 0.2s ease-in-out",
+                        "&:hover": {
+                          opacity: 0.7,
+                          transform: "scale(0.97)",
+                        },
+                      }}
+                    />
+                  </a>
                 </Typography>
               </motion.div>
             </Box>
@@ -214,16 +238,36 @@ const Footer = () => {
                     </Typography>
                   </Link>
                   <Typography
-                    component="h5"
-                    sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                    component="a"
+                    href="tel:+963997455600"
+                    sx={{
+                      fontSize: 16,
+                      color: "#eadccc",
+                      margin: "20px 0",
+                      textDecoration: "none",
+                      cursor: "pointer",
+                    }}
                   >
-                    +963 11 111
+                    {t("footer7")}
                   </Typography>
                   <Typography
                     component="h5"
-                    sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                    sx={{ fontSize: "16px", margin: "20px 0", color: "#fff" }}
                   >
-                    {t("contact3")}
+                    <Box
+                      component="a"
+                      href="mailto:info@alomran.sy"
+                      sx={{
+                        color: "#fff",
+                        textDecoration: "none",
+                        "&:hover": {
+                          color: "#fff",
+                          textDecoration: "none",
+                        },
+                      }}
+                    >
+                      info@alomran.sy
+                    </Box>
                   </Typography>
                 </motion.div>
               </Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type FormEvent } from "react";
 import {
   Box,
   TextField,
@@ -8,8 +8,10 @@ import {
   InputAdornment,
   useMediaQuery,
   useTheme,
+  Link,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Swal from "sweetalert2";
 import EmailIcon from "@mui/icons-material/Email";
 import image1 from "../../assets/image/05.webp";
 import { useTranslation } from "react-i18next";
@@ -25,6 +27,47 @@ const Contact: React.FC = () => {
   const [t, i18n] = useTranslation();
   const theme1 = useTheme();
   const isMdUp = useMediaQuery(theme1.breakpoints.up("md"));
+  // email
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    formData.append("access_key", "d6ec67ab-7c56-428a-b250-0f3d36627fec");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success && i18n.language === "en") {
+      Swal.fire({
+        title: "Done!",
+        text: "Your message has been sended",
+        icon: "success",
+      });
+      // setResult("Form Submitted Successfully");
+      event.currentTarget.reset();
+    } else {
+      console.log("Error", data);
+      // setResult(data.message);
+    }
+    if (data.success && i18n.language === "ar") {
+      Swal.fire({
+        title: "تم الإرسال",
+        text: "لقد تم إرسال رسالتك بنجاح",
+        icon: "success",
+      });
+      // setResult("Form Submitted Successfully");
+      event.currentTarget.reset();
+    } else {
+      console.log("Error", data);
+      // setResult(data.message);
+    }
+  };
+
   return (
     <div dir={t("dir")} id="contact">
       {" "}
@@ -100,11 +143,19 @@ const Contact: React.FC = () => {
                 {t("contact1")}
               </Typography>
               <Typography variant="body1" gutterBottom sx={{ mb: 4 }}>
-                {t("contact2")} <b> {t("contact3")}</b>
+                {t("contact2")}
+                <Link
+                  href="mailto:info@alomran.sy"
+                  underline="none"
+                  sx={{ color: "white" }}
+                >
+                  info@alomran.sy
+                </Link>
               </Typography>
 
               <Box
                 component="form"
+                onSubmit={onSubmit}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -123,6 +174,7 @@ const Contact: React.FC = () => {
                   <TextField
                     label={t("contact4")}
                     placeholder={t("contact6")}
+                    name="name"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -148,6 +200,7 @@ const Contact: React.FC = () => {
                 <TextField
                   label={t("contact8")}
                   placeholder={t("contact9")}
+                  name="email"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -161,6 +214,7 @@ const Contact: React.FC = () => {
                 <TextField
                   label={t("contact10")}
                   placeholder={t("contact11")}
+                  name="message"
                   multiline
                   minRows={4}
                 />
@@ -168,6 +222,7 @@ const Contact: React.FC = () => {
                 {/* زر الإرسال */}
                 <Button
                   variant="contained"
+                  type="submit"
                   fullWidth
                   sx={{
                     backgroundColor: "#0a3d62",

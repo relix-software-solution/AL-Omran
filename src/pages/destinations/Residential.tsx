@@ -8,6 +8,8 @@ import {
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import type { FormEvent } from "react";
+import Swal from "sweetalert2";
 
 const textFieldSx = {
   "& .MuiOutlinedInput-root": {
@@ -41,12 +43,54 @@ const Residential = () => {
   /* -------------------------------------------------------------------------- */
   /*                                 Translation                                */
   /* -------------------------------------------------------------------------- */
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    formData.append("access_key", "d6ec67ab-7c56-428a-b250-0f3d36627fec");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success && i18n.language === "en") {
+      Swal.fire({
+        title: "Done!",
+        text: "Your message has been sended",
+        icon: "success",
+      });
+      // setResult("Form Submitted Successfully");
+      event.currentTarget.reset();
+    } else {
+      console.log("Error", data);
+      // setResult(data.message);
+    }
+    if (data.success && i18n.language === "ar") {
+      Swal.fire({
+        title: "تم الإرسال",
+        text: "لقد تم إرسال رسالتك بنجاح",
+        icon: "success",
+      });
+      // setResult("Form Submitted Successfully");
+      event.currentTarget.reset();
+    } else {
+      console.log("Error", data);
+      // setResult(data.message);
+    }
+  };
 
   return (
     <>
       <div dir={t("dir")} id="res">
-        <Box sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}>
+        <Box
+          component="form"
+          onSubmit={onSubmit}
+          sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}
+        >
           <motion.div
             initial={{
               opacity: 0,
@@ -127,6 +171,7 @@ const Residential = () => {
               <TextField
                 label={t("contact13")}
                 placeholder={t("contact14")}
+                name="name"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -154,6 +199,7 @@ const Residential = () => {
                 <TextField
                   label={t("contact15")}
                   placeholder={t("contact16")}
+                  name="message"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -168,6 +214,7 @@ const Residential = () => {
                 <TextField
                   label={t("contact8")}
                   placeholder={t("contact9")}
+                  name="email"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -180,6 +227,7 @@ const Residential = () => {
               </Box>
             </Box>
             <Button
+              type="submit"
               sx={{
                 width: { xs: "140px", md: "200px" },
                 padding: "10px 20px",
