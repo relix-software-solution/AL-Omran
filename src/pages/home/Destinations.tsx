@@ -225,7 +225,7 @@ const Destinations = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "#1D1B56",
+                backgroundColor: "#1d1b56",
                 color: "#fff",
                 textTransform: "none",
                 borderRadius: "20px",
@@ -234,7 +234,7 @@ const Destinations = () => {
                 px: 2,
                 mt: { xs: 1, md: 0 },
                 "&:hover": {
-                  backgroundColor: "#0f4569",
+                  backgroundColor: "#1d1b56e2",
                 },
               }}
             >
