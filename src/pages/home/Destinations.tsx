@@ -2,8 +2,6 @@ import { HashLink as Link } from "react-router-hash-link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
-import video1 from "../../assets/2.mp4";
-import videoPoster from "../../assets/image/1.webp"; // <-- أضف صورة البوستر هنا
 import image1 from "../../assets/image/1.jpg";
 import image2 from "../../assets/image/2.webp";
 import image3 from "../../assets/image/3.webp";
@@ -18,7 +16,6 @@ const images = [
   {
     type: "image",
     src: image1,
-    poster: videoPoster, // أضفت خاصية poster هنا مع رابط الصورة
     label:
       "As architects and urban planners engaged in the reconstruction of the city of Homs, we are fully aware of the profound responsibility of shaping spaces that not only restore the physical fabric of the city...",
     labelAr:
@@ -143,7 +140,6 @@ const Destinations = () => {
                   component="video"
                   className="image"
                   src={img.src}
-                  poster={img.poster} // هنا استخدمت poster
                   autoPlay
                   loop
                   muted
