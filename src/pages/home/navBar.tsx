@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import logo from "../../assets/logo1.png";
+import logo from "../../assets/logo1.webp";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",

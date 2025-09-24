@@ -5,7 +5,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
-import logo1 from "../../assets/logo.png";
+import logo1 from "../../assets/logo.webp";
 import QR from "../../assets/image/QR.jpg";
 
 const Footer = () => {
@@ -277,7 +277,7 @@ const Footer = () => {
               sx={{
                 display: "flex",
                 width: { xs: "100%", md: "40%" },
-                paddingTop: "30px",
+                paddingTop: "40px",
               }}
             >
               <Box sx={{ width: "20%" }}>
@@ -302,7 +302,7 @@ const Footer = () => {
               </Box>
               <Box
                 sx={{
-                  width: "60%",
+                  width: "80%",
                   padding: { xs: "0 10px", md: " 10px 10px 10px" },
                 }}
               >

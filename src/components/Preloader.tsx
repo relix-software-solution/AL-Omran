@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import logo1 from "../assets/logo1.png";
+import logo1 from "../assets/logo1.webp";
 import gsap from "gsap";
 import { Box } from "@mui/material";
 

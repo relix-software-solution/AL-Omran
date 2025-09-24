@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import aboutImage from "../../assets/image/aboutUs.jpg";
+import aboutImage from "../../assets/image/aboutUs.webp";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";

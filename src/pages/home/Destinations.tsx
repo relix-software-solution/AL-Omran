@@ -2,7 +2,7 @@ import { HashLink as Link } from "react-router-hash-link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
-import image1 from "../../assets/image/1.jpg";
+import image1 from "../../assets/image/1.webp";
 import image2 from "../../assets/image/2.webp";
 import image3 from "../../assets/image/3.webp";
 import Button from "@mui/material/Button";
