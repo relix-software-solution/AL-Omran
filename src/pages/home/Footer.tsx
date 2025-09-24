@@ -29,7 +29,7 @@ const Footer = () => {
               display: { xs: "block", md: "flex" },
             }}
           >
-            <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+            <Box sx={{ width: { xs: "100%", md: "30%" } }}>
               <motion.div
                 initial={{
                   opacity: 0,
@@ -57,7 +57,7 @@ const Footer = () => {
                   component="h4"
                   sx={{
                     fontSize: "16px",
-                    color: "#BCA966",
+                    color: "#fff",
                     maxWidth: { xs: "300px", md: "400px" },
                     margin: "20px 0",
                   }}
@@ -68,7 +68,7 @@ const Footer = () => {
                   component="h4"
                   sx={{
                     fontSize: "16px",
-                    color: "#BCA966",
+                    color: "#fff",
                     display: "flex",
                     gap: "10px",
                   }}
@@ -132,7 +132,7 @@ const Footer = () => {
 
             <Box
               sx={{
-                width: { xs: "100%", md: "50%" },
+                width: { xs: "100%", md: "30%" },
                 padding: { xs: "20px 0 0", md: "30px" },
                 display: "flex",
               }}
@@ -161,10 +161,10 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#BCA966",
+                        color: "#fff",
                         margin: "20px 0",
                         "&:hover": {
-                          color: "#ffffff",
+                          color: "#BCA966",
                         },
                       }}
                     >
@@ -177,10 +177,10 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#BCA966",
+                        color: "#fff",
                         margin: "20px 0",
                         "&:hover": {
-                          color: "#ffffff",
+                          color: "#BCA966",
                         },
                       }}
                     >
@@ -193,10 +193,10 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#BCA966",
+                        color: "#fff",
                         margin: "20px 0",
                         "&:hover": {
-                          color: "#ffffff",
+                          color: "#BCA966",
                         },
                       }}
                     >
@@ -228,10 +228,10 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#BCA966",
+                        color: "#fff",
                         margin: "20px 0",
                         "&:hover": {
-                          color: "#ffffff",
+                          color: "#BCA966",
                         },
                       }}
                     >
@@ -243,7 +243,7 @@ const Footer = () => {
                     href="tel:+963997455600"
                     sx={{
                       fontSize: 16,
-                      color: "#BCA966",
+                      color: "#fff",
                       margin: "20px 0",
                       textDecoration: "none",
                       cursor: "pointer",
@@ -273,9 +273,14 @@ const Footer = () => {
                 </motion.div>
               </Box>
             </Box>
-            <Box>
-              <Box sx={{ width: "70%" }}>
-                {" "}
+            <Box
+              sx={{
+                display: "flex",
+                width: { xs: "100%", md: "40%" },
+                paddingTop: "30px",
+              }}
+            >
+              <Box sx={{ width: "20%" }}>
                 <motion.div
                   initial={{
                     opacity: 0,
@@ -292,15 +297,23 @@ const Footer = () => {
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                 >
-                  <Box component="img" src={QR} sx={{ width: "70%" }} />
+                  <Box component="img" src={QR} sx={{ width: "100%" }} />
                 </motion.div>
+              </Box>
+              <Box
+                sx={{
+                  width: "60%",
+                  padding: { xs: "0 10px", md: " 10px 10px 10px" },
+                }}
+              >
+                <Typography>{t("footer8")}</Typography>
               </Box>
             </Box>
           </Box>
 
           <Box sx={{ width: "90%", margin: "auto" }}>
             <Box
-              sx={{ width: "100%", height: "2px", backgroundColor: "#BCA966" }}
+              sx={{ width: "100%", height: "2px", backgroundColor: "#fff" }}
             ></Box>
           </Box>
 
@@ -331,7 +344,7 @@ const Footer = () => {
               >
                 <Typography
                   component="h5"
-                  sx={{ fontSize: "16", color: "#BCA966", margin: "20px 0" }}
+                  sx={{ fontSize: "16", color: "#fff", margin: "20px 0" }}
                 >
                   {t("footer2")}
                 </Typography>
@@ -357,7 +370,7 @@ const Footer = () => {
                 component="h5"
                 sx={{
                   fontSize: "16px",
-                  color: "#BCA966",
+                  color: "#fff",
                   margin: "20px 0 0",
                 }}
               >
@@ -372,11 +385,9 @@ const Footer = () => {
                     transition: "color 0.3s ease",
                   }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#ffffff")
-                  }
-                  onMouseLeave={(e) =>
                     (e.currentTarget.style.color = "#BCA966")
                   }
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
                 >
                   Relix
                 </a>

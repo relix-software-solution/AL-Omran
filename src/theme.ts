@@ -56,7 +56,7 @@ const theme = createTheme({
             borderColor: "#BCA966",
           },
           "& input::placeholder, & textarea::placeholder": {
-            color: "#BCA966",
+            color: "#fff",
             opacity: 1,
           },
           // إضافة لون النص داخل الحقول
