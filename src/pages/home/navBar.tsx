@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import logo from "../../assets/image/logo.png";
+import logo from "../../assets/logo1.png";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -27,7 +27,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backdropFilter: "blur(24px)",
   border: "1px solid",
   borderColor: (theme.vars || theme).palette.divider,
-  backgroundColor: "rgba(19, 90, 136, 0.54)",
+  backgroundColor: "#1d1b56c9",
   boxShadow: (theme.vars || theme).shadows[1],
 }));
 
@@ -139,10 +139,10 @@ export default function AppAppBar() {
                     variant="text"
                     size="medium"
                     sx={{
-                      color: location.hash === "#home" ? "#eadccc" : "#fff",
+                      color: location.hash === "#home" ? "#BCA966" : "#fff",
                       borderBottom:
                         location.hash === "#home"
-                          ? "2px solid #eadccc"
+                          ? "2px solid #BCA966"
                           : "none",
                       borderRadius: 0,
                     }}
@@ -156,10 +156,10 @@ export default function AppAppBar() {
                     variant="text"
                     size="medium"
                     sx={{
-                      color: location.hash === "#about" ? "#eadccc" : "#fff",
+                      color: location.hash === "#about" ? "#BCA966" : "#fff",
                       borderBottom:
                         location.hash === "#about"
-                          ? "2px solid #eadccc"
+                          ? "2px solid #BCA966"
                           : "none",
                       borderRadius: 0,
                     }}
@@ -172,10 +172,10 @@ export default function AppAppBar() {
                     variant="text"
                     size="medium"
                     sx={{
-                      color: location.hash === "#dest" ? "#eadccc" : "#fff",
+                      color: location.hash === "#dest" ? "#BCA966" : "#fff",
                       borderBottom:
                         location.hash === "#dest"
-                          ? "2px solid #eadccc"
+                          ? "2px solid #BCA966"
                           : "none",
                       borderRadius: 0,
                     }}
@@ -188,10 +188,10 @@ export default function AppAppBar() {
                     variant="text"
                     size="medium"
                     sx={{
-                      color: location.hash === "#services" ? "#eadccc" : "#fff",
+                      color: location.hash === "#services" ? "#BCA966" : "#fff",
                       borderBottom:
                         location.hash === "#services"
-                          ? "2px solid #eadccc"
+                          ? "2px solid #BCA966"
                           : "none",
                       borderRadius: 0,
                     }}
@@ -206,7 +206,7 @@ export default function AppAppBar() {
                     }}
                     variant="text"
                     size="medium"
-                    sx={{ color: "#eadccc" }}
+                    sx={{ color: "#BCA966" }}
                   >
                     En
                     <LanguageIcon
@@ -225,7 +225,7 @@ export default function AppAppBar() {
                     }}
                     variant="text"
                     size="medium"
-                    sx={{ color: "#eadccc" }}
+                    sx={{ color: "#BCA966" }}
                   >
                     Ar
                     <LanguageIcon
@@ -242,7 +242,7 @@ export default function AppAppBar() {
                   <Button
                     variant="contained"
                     size="medium"
-                    sx={{ borderRadius: "40px", color: "#eadccc" }}
+                    sx={{ borderRadius: "40px", color: "#fff" }}
                   >
                     {t("getInTouch")}
                   </Button>
@@ -270,7 +270,7 @@ export default function AppAppBar() {
                     <Box
                       sx={{
                         p: 2,
-                        backgroundColor: "rgba(19, 90, 136, 0.54)",
+                        backgroundColor: "#1D1B56",
                         backdropFilter: "blur(24px)",
                       }}
                     >
@@ -287,7 +287,7 @@ export default function AppAppBar() {
                             }}
                             variant="text"
                             size="medium"
-                            sx={{ color: "#eadccc" }}
+                            sx={{ color: "#BCA966" }}
                           >
                             En
                             <LanguageIcon
@@ -306,7 +306,7 @@ export default function AppAppBar() {
                             }}
                             variant="text"
                             size="medium"
-                            sx={{ color: "#eadccc" }}
+                            sx={{ color: "#BCA966" }}
                           >
                             Ar
                             <LanguageIcon
@@ -327,7 +327,7 @@ export default function AppAppBar() {
                         <MenuItem
                           sx={{
                             color:
-                              location.hash === "#home" ? "#eadccc" : "#fff",
+                              location.hash === "#home" ? "#BCA966" : "#fff",
                           }}
                         >
                           {t("home")}
@@ -337,7 +337,7 @@ export default function AppAppBar() {
                         <MenuItem
                           sx={{
                             color:
-                              location.hash === "#about" ? "#eadccc" : "#fff",
+                              location.hash === "#about" ? "#BCA966" : "#fff",
                           }}
                         >
                           {" "}
@@ -349,7 +349,7 @@ export default function AppAppBar() {
                         <MenuItem
                           sx={{
                             color:
-                              location.hash === "#dest" ? "#eadccc" : "#fff",
+                              location.hash === "#dest" ? "#BCA966" : "#fff",
                           }}
                         >
                           {" "}
@@ -362,7 +362,7 @@ export default function AppAppBar() {
                           sx={{
                             color:
                               location.hash === "#services"
-                                ? "#eadccc"
+                                ? "#BCA966"
                                 : "#fff",
                           }}
                         >
@@ -377,7 +377,7 @@ export default function AppAppBar() {
                           <Button
                             variant="contained"
                             size="medium"
-                            sx={{ borderRadius: "40px", color: "#eadccc" }}
+                            sx={{ borderRadius: "40px", color: "#fff" }}
                             fullWidth
                           >
                             {t("getInTouch")}

@@ -19,10 +19,10 @@ const theme = createTheme({
           borderRadius: "8px",
         },
         contained: {
-          backgroundColor: "#193a51",
+          backgroundColor: "#BCA966",
           color: "#ffffff",
           "&:hover": {
-            backgroundColor: "#102733",
+            backgroundColor: "#BCA966C9",
           },
         },
       },
@@ -38,7 +38,7 @@ const theme = createTheme({
         root: {
           color: "#fff",
           "&.Mui-focused": {
-            color: "#eadccc",
+            color: "#BCA966",
           },
         },
       },
@@ -50,13 +50,13 @@ const theme = createTheme({
             borderColor: "#fff",
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#eadccc",
+            borderColor: "#BCA966",
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#eadccc",
+            borderColor: "#BCA966",
           },
           "& input::placeholder, & textarea::placeholder": {
-            color: "#eadccc",
+            color: "#BCA966",
             opacity: 1,
           },
           // إضافة لون النص داخل الحقول

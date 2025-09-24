@@ -101,7 +101,7 @@ const Services = () => {
                   variant="h5"
                   sx={{
                     fontSize: "36px",
-                    color: "#193a51",
+                    color: "#1D1B56",
                     mb: 2,
                     ...(i18n.language === "ar" && {
                       textAlign: {
@@ -119,7 +119,7 @@ const Services = () => {
                 {" "}
                 <Box
                   sx={{
-                    backgroundColor: "#135a88",
+                    backgroundColor: "#1D1B56",
                     color: "white",
                     p: 3,
                     display: "inline-block",
@@ -218,17 +218,16 @@ const Services = () => {
                       {/* Content */}
                       <Box
                         sx={{
-                          backgroundColor: "rgba(19, 90, 136, 0.54)",
-                          color: "white",
+                          color: "#1D1B56",
                           p: 2,
                           width: "100%",
-                          ml: { xs: 0, md: 4 }, // تبعد النص عن الخط بالـ desktop فقط
-                          maxWidth: { xs: "100%", md: "80%" }, // تضييق العرض قليلاً بالـ desktop
+                          ml: { xs: 0, md: 4 },
+                          maxWidth: { xs: "100%", md: "80%" },
                         }}
                       >
                         <div dir={t("dir")}>
                           <Typography
-                            sx={{ fontSize: "24px", color: "#193a51" }}
+                            sx={{ fontSize: "24px", color: "#1D1B56" }}
                           >
                             {i18n.language === "ar"
                               ? service.titleAr
@@ -237,7 +236,7 @@ const Services = () => {
                         </div>
                         <div dir={t("dir")}>
                           {" "}
-                          <Typography>
+                          <Typography sx={{ color: "#1D1B56" }}>
                             {" "}
                             {i18n.language === "ar"
                               ? service.descriptionAr

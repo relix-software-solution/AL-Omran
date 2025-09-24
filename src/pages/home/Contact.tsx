@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
             alignItems: "center",
             justifyContent: "center",
             backdropFilter: "blur(8px)",
-            backgroundColor: "rgba(19, 90, 136, 0.54)",
+            backgroundColor: "#1d1b56c9",
           }}
         >
           {" "}
@@ -178,7 +178,7 @@ const Contact: React.FC = () => {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <AccountCircleIcon sx={{ color: "#eadccc" }} />
+                          <AccountCircleIcon sx={{ color: "#BCA966" }} />
                         </InputAdornment>
                       ),
                     }}
@@ -189,7 +189,7 @@ const Contact: React.FC = () => {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <AccountCircleIcon sx={{ color: "#eadccc" }} />
+                          <AccountCircleIcon sx={{ color: "#BCA966" }} />
                         </InputAdornment>
                       ),
                     }}
@@ -204,7 +204,7 @@ const Contact: React.FC = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailIcon sx={{ color: "#eadccc" }} />
+                        <EmailIcon sx={{ color: "#BCA966" }} />
                       </InputAdornment>
                     ),
                   }}
@@ -225,7 +225,7 @@ const Contact: React.FC = () => {
                   type="submit"
                   fullWidth
                   sx={{
-                    backgroundColor: "#0a3d62",
+                    backgroundColor: "#BCA966",
                     color: "white",
                     py: 1.5,
                     borderRadius: "999px",

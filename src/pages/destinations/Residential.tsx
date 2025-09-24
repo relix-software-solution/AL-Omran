@@ -14,17 +14,17 @@ import Swal from "sweetalert2";
 const textFieldSx = {
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#193a51",
+      borderColor: "#1D1B56",
       borderRadius: "16px",
     },
     "&:hover fieldset": {
-      borderColor: "#193a51",
+      borderColor: "#1D1B56",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#193a51",
+      borderColor: "#1D1B56",
     },
     "& input": {
-      color: "#193a51",
+      color: "#1D1B56",
     },
     "& input::placeholder": {
       color: "#666",
@@ -32,10 +32,10 @@ const textFieldSx = {
     },
   },
   "& .MuiInputLabel-root": {
-    color: "#193a51",
+    color: "#1D1B56",
   },
   "& .MuiInputLabel-root.Mui-focused": {
-    color: "#193a51",
+    color: "#1D1B56",
   },
 };
 
@@ -113,7 +113,7 @@ const Residential = () => {
               sx={{
                 textAlign: "center",
                 mb: 5,
-                color: "#193a51",
+                color: "#1D1B56",
                 fontSize: { xs: "32px", md: "72px" },
               }}
             >
@@ -142,7 +142,7 @@ const Residential = () => {
               sx={{
                 textAlign: "center",
                 mb: 5,
-                color: "#193a51",
+                color: "#1D1B56",
                 fontSize: { xs: "20px", md: "30px" },
               }}
             >
@@ -175,7 +175,7 @@ const Residential = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <AccountCircleIcon sx={{ color: "#193a51" }} />
+                      <AccountCircleIcon sx={{ color: "#1D1B56" }} />
                     </InputAdornment>
                   ),
                 }}
@@ -203,7 +203,7 @@ const Residential = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#193a51" }} />
+                        <AccountCircleIcon sx={{ color: "#1D1B56" }} />
                       </InputAdornment>
                     ),
                   }}
@@ -218,7 +218,7 @@ const Residential = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#193a51" }} />
+                        <AccountCircleIcon sx={{ color: "#1D1B56" }} />
                       </InputAdornment>
                     ),
                   }}

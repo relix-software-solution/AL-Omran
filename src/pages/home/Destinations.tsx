@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
 import video1 from "../../assets/2.mp4";
 import videoPoster from "../../assets/image/1.webp"; // <-- أضف صورة البوستر هنا
+import image1 from "../../assets/image/1.jpg";
 import image2 from "../../assets/image/2.webp";
 import image3 from "../../assets/image/3.webp";
 import Button from "@mui/material/Button";
@@ -15,8 +16,8 @@ import { motion } from "motion/react";
 
 const images = [
   {
-    type: "video",
-    src: video1,
+    type: "image",
+    src: image1,
     poster: videoPoster, // أضفت خاصية poster هنا مع رابط الصورة
     label:
       "As architects and urban planners engaged in the reconstruction of the city of Homs, we are fully aware of the profound responsibility of shaping spaces that not only restore the physical fabric of the city...",
@@ -64,7 +65,7 @@ const Destinations = () => {
           >
             <Typography
               component="span"
-              sx={{ fontSize: "36px", color: "#193a51" }}
+              sx={{ fontSize: "36px", color: "#1D1B56" }}
             >
               {t("destination")}
             </Typography>
@@ -92,7 +93,7 @@ const Destinations = () => {
           <Box>
             <Typography
               component="span"
-              sx={{ fontSize: "28px", color: "#193a51" }}
+              sx={{ fontSize: "28px", color: "#1D1B56" }}
             >
               {t("dest1")}
             </Typography>
@@ -100,7 +101,7 @@ const Destinations = () => {
           <Box sx={{ marginBottom: "8px" }}>
             <Typography
               component="span"
-              sx={{ fontSize: "20px", color: "#193a51" }}
+              sx={{ fontSize: "20px", color: "#1D1B56" }}
             >
               <PlaceIcon sx={{ color: "#ff0000", fontSize: "18px" }} />{" "}
               {t("dest2")}
@@ -228,7 +229,7 @@ const Destinations = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "#135a88",
+                backgroundColor: "#1D1B56",
                 color: "#fff",
                 textTransform: "none",
                 borderRadius: "20px",
@@ -244,11 +245,11 @@ const Destinations = () => {
               {t("dest3")}
               {i18n.language === "ar" ? (
                 <ArrowCircleLeftIcon
-                  sx={{ padding: "0 5px", color: "#eadccc" }}
+                  sx={{ padding: "0 5px", color: "#BCA966" }}
                 />
               ) : (
                 <ArrowCircleRightIcon
-                  sx={{ padding: "0 5px", color: "#eadccc" }}
+                  sx={{ padding: "0 5px", color: "#BCA966" }}
                 />
               )}
             </Button>

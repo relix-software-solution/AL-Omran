@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import aboutImage from "../../assets/image/AboutUs.webp";
+import aboutImage from "../../assets/image/aboutUs.jpg";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
@@ -45,7 +45,7 @@ const AboutUs = () => {
           >
             <Typography
               component="span"
-              sx={{ fontSize: "36px", color: "#193a51" }}
+              sx={{ fontSize: "36px", color: "#1D1B56" }}
             >
               {t("aboutUs")}
             </Typography>
@@ -133,7 +133,7 @@ const AboutUs = () => {
                   component="h1"
                   sx={{
                     fontSize: "32px",
-                    color: "#193a51",
+                    color: "#1D1B56",
                   }}
                 >
                   {t("about1")}
@@ -142,7 +142,7 @@ const AboutUs = () => {
                   component="span"
                   sx={{
                     fontSize: "16px",
-                    color: "#193a51",
+                    color: "#1D1B56",
                   }}
                 >
                   {t("about2")}
@@ -175,7 +175,7 @@ const AboutUs = () => {
         >
           <Box
             sx={{
-              backgroundColor: "rgba(19, 90, 136)",
+              backgroundColor: "#1D1B56",
               backdropFilter: "blur(24px)",
               color: "#fff",
               p: { xs: 4, md: 4 },
@@ -188,7 +188,7 @@ const AboutUs = () => {
               component="h1"
               sx={{
                 fontSize: "28px",
-                color: "#eadccc",
+                color: "#BCA966",
               }}
             >
               {t("vision")}
@@ -197,7 +197,7 @@ const AboutUs = () => {
           </Box>
           <Box
             sx={{
-              backgroundColor: "rgba(19, 90, 136)",
+              backgroundColor: "#1D1B56",
               backdropFilter: "blur(24px)",
               color: "#fff",
               p: { xs: 4, md: 4 },
@@ -210,7 +210,7 @@ const AboutUs = () => {
               component="h1"
               sx={{
                 fontSize: "28px",
-                color: "#eadccc",
+                color: "#BCA966",
               }}
             >
               {t("mission")}
@@ -223,7 +223,7 @@ const AboutUs = () => {
         <Box
           sx={{
             height: { xs: "300px", md: "150px" },
-            backgroundColor: "#193a51",
+            backgroundColor: "#1D1B56",
             margin: "30px 0",
             alignContent: "center",
             textAlign: "center",
@@ -241,7 +241,7 @@ const AboutUs = () => {
               component="h1"
               sx={{
                 fontSize: "28px",
-                color: "#eadccc",
+                color: "#fff",
                 alignContent: "center",
               }}
             >
@@ -253,7 +253,7 @@ const AboutUs = () => {
               href="/company-profile.pdf" // حط رابط ملف PDF الحقيقي هون
               download
               sx={{
-                backgroundColor: "#135a88",
+                backgroundColor: "#BCA966",
                 color: "#fff",
                 borderRadius: "0px",
                 textTransform: "none",
@@ -264,7 +264,7 @@ const AboutUs = () => {
                 fontSize: "16px",
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  backgroundColor: "#164052", // لون أغمق شوي عند الهوفر
+                  backgroundColor: "#BCA966C9", // لون أغمق شوي عند الهوفر
                 },
               }}
             >

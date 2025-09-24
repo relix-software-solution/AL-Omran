@@ -5,7 +5,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
-import logo1 from "../../assets/image/logo1 - Copy.png";
+import logo1 from "../../assets/logo.png";
+import QR from "../../assets/image/QR.jpg";
 
 const Footer = () => {
   /* -------------------------------------------------------------------------- */
@@ -19,7 +20,7 @@ const Footer = () => {
     <>
       <div dir={t("dir")}>
         {" "}
-        <Box sx={{ height: "100%", backgroundColor: "#193a51" }}>
+        <Box sx={{ height: "100%", backgroundColor: "#1D1B56" }}>
           <Box
             sx={{
               width: "90%",
@@ -56,7 +57,7 @@ const Footer = () => {
                   component="h4"
                   sx={{
                     fontSize: "16px",
-                    color: "#eadccc",
+                    color: "#BCA966",
                     maxWidth: { xs: "300px", md: "400px" },
                     margin: "20px 0",
                   }}
@@ -67,7 +68,7 @@ const Footer = () => {
                   component="h4"
                   sx={{
                     fontSize: "16px",
-                    color: "#eadccc",
+                    color: "#BCA966",
                     display: "flex",
                     gap: "10px",
                   }}
@@ -160,7 +161,7 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#eadccc",
+                        color: "#BCA966",
                         margin: "20px 0",
                         "&:hover": {
                           color: "#ffffff",
@@ -176,7 +177,7 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#eadccc",
+                        color: "#BCA966",
                         margin: "20px 0",
                         "&:hover": {
                           color: "#ffffff",
@@ -192,7 +193,7 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#eadccc",
+                        color: "#BCA966",
                         margin: "20px 0",
                         "&:hover": {
                           color: "#ffffff",
@@ -227,7 +228,7 @@ const Footer = () => {
                       component="h5"
                       sx={{
                         fontSize: "16",
-                        color: "#eadccc",
+                        color: "#BCA966",
                         margin: "20px 0",
                         "&:hover": {
                           color: "#ffffff",
@@ -242,7 +243,7 @@ const Footer = () => {
                     href="tel:+963997455600"
                     sx={{
                       fontSize: 16,
-                      color: "#eadccc",
+                      color: "#BCA966",
                       margin: "20px 0",
                       textDecoration: "none",
                       cursor: "pointer",
@@ -272,10 +273,34 @@ const Footer = () => {
                 </motion.div>
               </Box>
             </Box>
+            <Box>
+              <Box sx={{ width: "70%" }}>
+                {" "}
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: isMdUp ? -50 : 50,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: 0.2,
+                      duration: 0.8,
+                      ease: [0.75, 0.01, 0.31, 1],
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.5 }}
+                >
+                  <Box component="img" src={QR} sx={{ width: "70%" }} />
+                </motion.div>
+              </Box>
+            </Box>
           </Box>
+
           <Box sx={{ width: "90%", margin: "auto" }}>
             <Box
-              sx={{ width: "100%", height: "2px", backgroundColor: "#eadccc" }}
+              sx={{ width: "100%", height: "2px", backgroundColor: "#BCA966" }}
             ></Box>
           </Box>
 
@@ -306,7 +331,7 @@ const Footer = () => {
               >
                 <Typography
                   component="h5"
-                  sx={{ fontSize: "16", color: "#eadccc", margin: "20px 0" }}
+                  sx={{ fontSize: "16", color: "#BCA966", margin: "20px 0" }}
                 >
                   {t("footer2")}
                 </Typography>
@@ -332,8 +357,8 @@ const Footer = () => {
                 component="h5"
                 sx={{
                   fontSize: "16px",
-                  color: "#eadccc",
-                  margin: "20px 0",
+                  color: "#BCA966",
+                  margin: "20px 0 0",
                 }}
               >
                 {t("footer5")}{" "}
@@ -342,7 +367,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: "#eadccc",
+                    color: "#BCA966",
                     textDecoration: "none",
                     transition: "color 0.3s ease",
                   }}
@@ -350,7 +375,7 @@ const Footer = () => {
                     (e.currentTarget.style.color = "#ffffff")
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "#eadccc")
+                    (e.currentTarget.style.color = "#BCA966")
                   }
                 >
                   Relix

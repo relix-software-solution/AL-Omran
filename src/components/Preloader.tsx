@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import logo1 from "../assets/image/logo1 - Copy.png";
+import logo1 from "../assets/logo1.png";
 import gsap from "gsap";
 import { Box } from "@mui/material";
 
@@ -49,9 +49,9 @@ const Preloader = () => {
         left: 0,
         width: "100vw",
         height: "100vh",
-        backgroundColor: "rgba(25, 58, 82, 0.8)",
+        backgroundColor: "#1d1b56c9",
         backdropFilter: "blur(24px)",
-        color: "#eadccc",
+        color: "#BCA966",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
