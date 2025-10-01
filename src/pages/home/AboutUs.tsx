@@ -1,11 +1,17 @@
+import { useRef } from "react";
 import Box from "@mui/material/Box";
-import aboutImage from "../../assets/image/aboutUs.webp";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import aboutImage from "../../assets/image/aboutUs.webp";
+import aboutImage2 from "../../assets/image/aboutUs1.jpg";
 
 const AboutUs = () => {
   /* -------------------------------------------------------------------------- */
@@ -15,6 +21,10 @@ const AboutUs = () => {
 
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+
+  // ref to control Swiper instance
+  const swiperRef = useRef<any>(null);
+
   return (
     <>
       <div dir={t("dir")} id="about">
@@ -52,6 +62,7 @@ const AboutUs = () => {
           </motion.div>
         </Box>
       </div>
+
       <div dir={t("dir")}>
         <Box
           sx={{
@@ -59,8 +70,10 @@ const AboutUs = () => {
             display: { xs: "block", md: "flex" },
             margin: "auto",
             justifyContent: "space-between",
+            position: "relative",
           }}
         >
+          {/* LEFT: Swiper image area */}
           <Box sx={{ width: { xs: "100%", md: "47%" } }}>
             <motion.div
               initial={{
@@ -80,24 +93,66 @@ const AboutUs = () => {
               }}
               viewport={{ once: false, amount: 0.5 }}
             >
+              {/* frame with fixed height to preserve dimensions */}
               <Box
-                component="img"
-                src={aboutImage}
-                alt="About Us"
                 sx={{
                   width: "100%",
                   height: { xs: 200, md: 400 },
-                  objectFit: "cover",
+                  position: "relative",
                 }}
-                loading="lazy"
-              />
+              >
+                {/* Swiper */}
+                <Swiper
+                  modules={[Autoplay]}
+                  slidesPerView={1}
+                  loop
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  onSwiper={(swiper) => {
+                    // store swiper instance to ref for external controls
+                    swiperRef.current = swiper;
+                  }}
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  <SwiperSlide>
+                    <Box
+                      component="img"
+                      src={aboutImage}
+                      alt="About Us"
+                      sx={{
+                        width: "100%",
+                        height: { xs: 200, md: 400 },
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                      loading="lazy"
+                    />
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <Box
+                      component="img"
+                      src={aboutImage2}
+                      alt="About Us 2"
+                      sx={{
+                        width: "100%",
+                        height: { xs: 200, md: 400 },
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                      loading="lazy"
+                    />
+                  </SwiperSlide>
+                </Swiper>
+              </Box>
             </motion.div>
           </Box>
+
+          {/* RIGHT: Text/content */}
           <Box
-            sx={{
-              width: { xs: "100%", md: "45%" },
-              alignContent: "center",
-            }}
+            sx={{ width: { xs: "100%", md: "45%" }, alignContent: "center" }}
           >
             <Box
               sx={{
@@ -131,19 +186,13 @@ const AboutUs = () => {
               >
                 <Typography
                   component="h1"
-                  sx={{
-                    fontSize: "32px",
-                    color: "#1D1B56",
-                  }}
+                  sx={{ fontSize: "32px", color: "#1D1B56" }}
                 >
                   {t("about1")}
                 </Typography>{" "}
                 <Typography
                   component="span"
-                  sx={{
-                    fontSize: "16px",
-                    color: "#1D1B56",
-                  }}
+                  sx={{ fontSize: "16px", color: "#1D1B56" }}
                 >
                   {t("about2")}
                 </Typography>
@@ -152,6 +201,7 @@ const AboutUs = () => {
           </Box>
         </Box>
       </div>
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{
@@ -174,6 +224,7 @@ const AboutUs = () => {
           }}
         >
           <Box
+            dir={t("dir")}
             sx={{
               backgroundColor: "#1D1B56",
               backdropFilter: "blur(24px)",
@@ -186,16 +237,15 @@ const AboutUs = () => {
           >
             <Typography
               component="h1"
-              sx={{
-                fontSize: "28px",
-                color: "#BCA966",
-              }}
+              sx={{ fontSize: "28px", color: "#BCA966" }}
             >
               {t("vision")}
             </Typography>{" "}
             {t("vision1")}
           </Box>
+
           <Box
+            dir={t("dir")}
             sx={{
               backgroundColor: "#1D1B56",
               backdropFilter: "blur(24px)",
@@ -208,10 +258,7 @@ const AboutUs = () => {
           >
             <Typography
               component="h1"
-              sx={{
-                fontSize: "28px",
-                color: "#BCA966",
-              }}
+              sx={{ fontSize: "28px", color: "#BCA966" }}
             >
               {t("mission")}
             </Typography>{" "}
@@ -219,6 +266,7 @@ const AboutUs = () => {
           </Box>
         </Box>{" "}
       </motion.div>
+
       <div dir={t("dir")}>
         <Box
           sx={{
@@ -239,18 +287,14 @@ const AboutUs = () => {
           >
             <Typography
               component="h1"
-              sx={{
-                fontSize: "28px",
-                color: "#fff",
-                alignContent: "center",
-              }}
+              sx={{ fontSize: "28px", color: "#fff", alignContent: "center" }}
             >
               {t("about3")}
             </Typography>
             <Button
               variant="contained"
               startIcon={<ArrowCircleDownIcon sx={{ padding: "0 10px" }} />}
-              href="/company-profile.pdf" // حط رابط ملف PDF الحقيقي هون
+              href="/company-profile.pdf"
               download
               sx={{
                 backgroundColor: "#BCA966",
@@ -263,9 +307,7 @@ const AboutUs = () => {
                 fontWeight: 500,
                 fontSize: "16px",
                 transition: "all 0.3s ease",
-                "&:hover": {
-                  backgroundColor: "#BCA966C9", // لون أغمق شوي عند الهوفر
-                },
+                "&:hover": { backgroundColor: "#BCA966C9" },
               }}
             >
               {t("about4")}

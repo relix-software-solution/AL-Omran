@@ -276,11 +276,11 @@ const Footer = () => {
             <Box
               sx={{
                 display: "flex",
-                width: { xs: "100%", md: "40%" },
-                paddingTop: "40px",
+                width: { xs: "100%", md: "30%" },
+                padding: { xs: "20px 0 0", md: "30px" },
               }}
             >
-              <Box sx={{ width: "20%" }}>
+              <Box sx={{ width: "40%" }}>
                 <motion.div
                   initial={{
                     opacity: 0,
@@ -297,16 +297,47 @@ const Footer = () => {
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                 >
-                  <Box component="img" src={QR} sx={{ width: "100%" }} />
+                  <Link to="https://forms.zohopublic.com/mnmahlihe1/form/NewCustomerRegistrationForm/formperma/1aGLJO8dwySNo9dHefYpcykT5TTs3-gPEL4UsmX9JLA">
+                    <Box
+                      component="img"
+                      src={QR}
+                      sx={{
+                        width: "80%",
+                        padding: { xs: "20px 0", md: "20px" },
+                      }}
+                    />
+                  </Link>
                 </motion.div>
               </Box>
-              <Box
-                sx={{
-                  width: "80%",
-                  padding: { xs: "0 10px", md: " 10px 10px 10px" },
-                }}
-              >
-                <Typography>{t("footer8")}</Typography>
+              <Box sx={{ width: "60%" }}>
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: isMdUp ? -50 : 50,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: 0.2,
+                      duration: 0.8,
+                      ease: [0.75, 0.01, 0.31, 1],
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.5 }}
+                >
+                  <Link to="https://forms.zohopublic.com/mnmahlihe1/form/NewCustomerRegistrationForm/formperma/1aGLJO8dwySNo9dHefYpcykT5TTs3-gPEL4UsmX9JLA">
+                    <Box
+                      sx={{
+                        width: "100%",
+                        padding: { xs: "15px 10px", md: "0 10px " },
+                        margin: "60px 0 0",
+                      }}
+                    >
+                      <Typography>{t("footer8")}</Typography>
+                    </Box>
+                  </Link>
+                </motion.div>
               </Box>
             </Box>
           </Box>

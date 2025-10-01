@@ -7,8 +7,8 @@ const services = [
   {
     title: "Development & Management",
     titleAr: "التطوير والإدارة",
-    description: "Visionary project planning and execution.",
-    descriptionAr: "تخطيط وتنفيذ المشاريع الرؤيوية.",
+    description: "Planning and implementing successful visionary projects.",
+    descriptionAr: "تخطيط وتنفيذ المشاريع ذات الرؤى المستقبلية الناجحة",
   },
   {
     title: "Sales, Lease & Marketing",
@@ -19,14 +19,14 @@ const services = [
   {
     title: "Property Management",
     titleAr: "إدارة الممتلكات",
-    description: "Comprehensive management for tenant satisfaction.",
-    descriptionAr: "إدارة شاملة لرضا المستأجرين.",
+    description: "Comprehensive customer satisfaction management",
+    descriptionAr: "ادارة شاملة لرضا العملاء.",
   },
   {
     title: "Asset Management / Investment",
     titleAr: "إدارة الأصول / الاستثمار",
-    description: "Maximizing asset value and investment growth.",
-    descriptionAr: "تعظيم قيمة الأصول ونمو الاستثمار.",
+    description: "Investment growth and asset value increase",
+    descriptionAr: "نمو الاستثمار وزيادة قيمة الاصول.",
   },
 ];
 

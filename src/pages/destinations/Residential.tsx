@@ -232,10 +232,13 @@ const Residential = () => {
                 width: { xs: "140px", md: "200px" },
                 padding: "10px 20px",
                 fontSize: "16px",
-                background: "#c09660",
+                background: "#BCA966",
                 color: "#fff",
                 borderRadius: "40px",
                 margin: "30px auto 10px",
+                "&:hover": {
+                  backgroundColor: "#BCA966C9",
+                },
               }}
             >
               {t("contact12")}

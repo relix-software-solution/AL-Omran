@@ -138,7 +138,7 @@ const Commercial = () => {
           sx={{
             width: "100%",
             height: { xs: "200px", md: "300px" },
-            backgroundColor: "#c09660",
+            backgroundColor: "#BCA966",
             color: "#fff",
             textAlign: "center",
             display: "flex",
@@ -234,40 +234,18 @@ const Commercial = () => {
             sx={{
               position: "absolute",
               bottom: { xs: 20, md: 40 },
-              left: { xs: 20, md: 60 },
-              maxWidth: { xs: "300px", md: "450px" },
-              fontSize: { xs: "28px", md: "72px" },
+              left: i18n.language === "ar" ? "auto" : { xs: 20, md: 60 },
+              right: i18n.language === "ar" ? { xs: 20, md: 60 } : "auto",
+              maxWidth: { xs: "150px", md: "300px" },
+              fontSize: { xs: "18px", md: "36px" },
               color: "white",
-              fontWeight: "bold",
               textShadow: "2px 2px 10px rgba(0,0,0,0.8)",
               zIndex: 2,
+              textAlign: i18n.language === "ar" ? "right" : "left",
             }}
           >
             {t("dest10")}
           </Typography>
-
-          {/* Prev Button */}
-          <IconButton
-            onClick={handlePrev}
-            sx={{
-              position: "absolute",
-              top: { xs: "80%", md: "52%" },
-              left: { xs: "auto", md: 16 },
-              right: { xs: 76, md: "auto" },
-              transform: "translateY(-50%)",
-              bgcolor: "#c09660",
-              color: "white",
-              width: { xs: 45, md: 56 },
-              height: { xs: 45, md: 56 },
-              borderRadius: "50%",
-              zIndex: 2,
-              "&:hover": { bgcolor: "#b1864e" },
-            }}
-          >
-            <ArrowForwardIosIcon
-              sx={{ paddingLeft: "3px", transform: "rotate(180deg)" }}
-            />
-          </IconButton>
 
           {/* Next Button */}
           <IconButton
@@ -275,18 +253,54 @@ const Commercial = () => {
             sx={{
               position: "absolute",
               top: { xs: "80%", md: "50%" },
-              right: 16,
+              left:
+                i18n.language === "ar"
+                  ? { xs: 76, md: "auto" }
+                  : { xs: "auto", md: 16 },
+              right:
+                i18n.language === "ar"
+                  ? { xs: "auto", md: 16 }
+                  : { xs: 16, md: "auto" },
               transform: "translateY(-50%)",
-              bgcolor: "#c09660",
+              bgcolor: "#BCA966",
               color: "white",
               width: { xs: 45, md: 56 },
               height: { xs: 45, md: 56 },
               borderRadius: "50%",
               zIndex: 2,
-              "&:hover": { bgcolor: "#b1864e" },
+              "&:hover": { bgcolor: "#BCA966C9" },
             }}
           >
-            <ArrowForwardIosIcon />
+            <ArrowForwardIosIcon sx={{ paddingLeft: "3px" }} />
+          </IconButton>
+
+          {/* Prev Button */}
+          <IconButton
+            onClick={handlePrev}
+            sx={{
+              position: "absolute",
+              top: { xs: "80%", md: "50%" },
+              left:
+                i18n.language === "ar"
+                  ? { xs: 16, md: 16 }
+                  : { xs: "auto", md: "auto" },
+              right:
+                i18n.language === "ar"
+                  ? { xs: 76, md: "auto" }
+                  : { xs: 76, md: 16 },
+              transform: "translateY(-50%)",
+              bgcolor: "#BCA966",
+              color: "white",
+              width: { xs: 45, md: 56 },
+              height: { xs: 45, md: 56 },
+              borderRadius: "50%",
+              zIndex: 2,
+              "&:hover": { bgcolor: "#BCA966C9" },
+            }}
+          >
+            <ArrowForwardIosIcon
+              sx={{ paddingLeft: "3px", transform: "rotate(180deg)" }}
+            />
           </IconButton>
         </Box>
 
@@ -432,10 +446,13 @@ const Commercial = () => {
                   width: { xs: "140px", md: "200px" },
                   padding: "10px 20px",
                   fontSize: "16px",
-                  background: "#c09660",
+                  background: "#BCA966",
                   color: "#fff",
                   borderRadius: "40px",
                   margin: "30px auto 10px",
+                  "&:hover": {
+                    backgroundColor: "#BCA966C9",
+                  },
                 }}
               >
                 {t("contact12")}

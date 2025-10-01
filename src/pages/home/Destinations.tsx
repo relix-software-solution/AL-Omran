@@ -182,7 +182,7 @@ const Destinations = () => {
                 }}
               />
 
-              <Box
+              {/* <Box
                 className="text"
                 sx={{
                   position: "absolute",
@@ -198,7 +198,7 @@ const Destinations = () => {
                 <Typography variant="body1">
                   {i18n.language === "ar" ? img.labelAr : img.label}
                 </Typography>
-              </Box>
+              </Box> */}
             </Box>
           ))}
         </Box>

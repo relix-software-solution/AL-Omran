@@ -50,7 +50,7 @@ const Landing = () => {
           variant="contained"
           startIcon={scrolled ? <GetAppIcon /> : undefined}
           sx={{
-            backgroundColor: "#c09660",
+            backgroundColor: "#BCA966",
             color: "#fff",
             borderRadius: "40px",
             width: scrolled ? "50px" : { xs: "160px", md: "300px" },
@@ -75,7 +75,7 @@ const Landing = () => {
             variant="contained"
             startIcon={scrolled ? <AssignmentIcon /> : undefined}
             sx={{
-              backgroundColor: "#c09660",
+              backgroundColor: "#BCA966",
               color: "#fff",
               borderRadius: "40px",
               width: scrolled ? "50px" : { xs: "160px", md: "300px" },
@@ -202,7 +202,7 @@ const Landing = () => {
                   width: { xs: "140px", md: "200px" },
                   padding: "10px 20px",
                   fontSize: { xs: "16px", md: "24px" },
-                  background: "#c09660",
+                  background: "#BCA966",
                   color: "#fff",
                   borderRadius: "40px",
                 }}
@@ -216,7 +216,7 @@ const Landing = () => {
                   width: { xs: "140px", md: "200px" },
                   padding: "10px 20px",
                   fontSize: { xs: "16px", md: "24px" },
-                  background: "#c09660",
+                  background: "#BCA966",
                   color: "#fff",
                   borderRadius: "40px",
                   margin: "0 10px",
