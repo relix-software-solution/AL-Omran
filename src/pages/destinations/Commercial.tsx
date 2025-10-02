@@ -1,14 +1,6 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useState, type FormEvent } from "react";
+import { Box, IconButton, Typography } from "@mui/material";
+import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import video1 from "../../assets/3.mp4";
 import videoPoster from "../../assets/image/05.webp"; // استورد صورة البوستر المناسبة للفيديو
 import image2 from "../../assets/image/8.webp";
@@ -18,35 +10,34 @@ import image5 from "../../assets/image/3.webp";
 import image6 from "../../assets/image/6.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
-import Swal from "sweetalert2";
 
-const textFieldSx = {
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "#1D1B56",
-      borderRadius: "16px",
-    },
-    "&:hover fieldset": {
-      borderColor: "#1D1B56",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#1D1B56",
-    },
-    "& input": {
-      color: "#1D1B56",
-    },
-    "& input::placeholder": {
-      color: "#666",
-      opacity: 1,
-    },
-  },
-  "& .MuiInputLabel-root": {
-    color: "#1D1B56",
-  },
-  "& .MuiInputLabel-root.Mui-focused": {
-    color: "#1D1B56",
-  },
-};
+// const textFieldSx = {
+//   "& .MuiOutlinedInput-root": {
+//     "& fieldset": {
+//       borderColor: "#1D1B56",
+//       borderRadius: "16px",
+//     },
+//     "&:hover fieldset": {
+//       borderColor: "#1D1B56",
+//     },
+//     "&.Mui-focused fieldset": {
+//       borderColor: "#1D1B56",
+//     },
+//     "& input": {
+//       color: "#1D1B56",
+//     },
+//     "& input::placeholder": {
+//       color: "#666",
+//       opacity: 1,
+//     },
+//   },
+//   "& .MuiInputLabel-root": {
+//     color: "#1D1B56",
+//   },
+//   "& .MuiInputLabel-root.Mui-focused": {
+//     color: "#1D1B56",
+//   },
+// };
 
 const images = [
   {
@@ -92,44 +83,44 @@ const Commercial = () => {
   /* -------------------------------------------------------------------------- */
   const [t, i18n] = useTranslation();
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  // const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const formData = new FormData(event.currentTarget);
 
-    formData.append("access_key", "d6ec67ab-7c56-428a-b250-0f3d36627fec");
+  //   formData.append("access_key", "d6ec67ab-7c56-428a-b250-0f3d36627fec");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
+  //   const response = await fetch("https://api.web3forms.com/submit", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    if (data.success && i18n.language === "en") {
-      Swal.fire({
-        title: "Done!",
-        text: "Your message has been sended",
-        icon: "success",
-      });
-      // setResult("Form Submitted Successfully");
-      event.currentTarget.reset();
-    } else {
-      console.log("Error", data);
-      // setResult(data.message);
-    }
-    if (data.success && i18n.language === "ar") {
-      Swal.fire({
-        title: "تم الإرسال",
-        text: "لقد تم إرسال رسالتك بنجاح",
-        icon: "success",
-      });
-      // setResult("Form Submitted Successfully");
-      event.currentTarget.reset();
-    } else {
-      console.log("Error", data);
-      // setResult(data.message);
-    }
-  };
+  //   if (data.success && i18n.language === "en") {
+  //     Swal.fire({
+  //       title: "Done!",
+  //       text: "Your message has been sended",
+  //       icon: "success",
+  //     });
+  //     // setResult("Form Submitted Successfully");
+  //     event.currentTarget.reset();
+  //   } else {
+  //     console.log("Error", data);
+  //     // setResult(data.message);
+  //   }
+  //   if (data.success && i18n.language === "ar") {
+  //     Swal.fire({
+  //       title: "تم الإرسال",
+  //       text: "لقد تم إرسال رسالتك بنجاح",
+  //       icon: "success",
+  //     });
+  //     // setResult("Form Submitted Successfully");
+  //     event.currentTarget.reset();
+  //   } else {
+  //     console.log("Error", data);
+  //     // setResult(data.message);
+  //   }
+  // };
   return (
     <>
       <div id="comm">
@@ -305,7 +296,7 @@ const Commercial = () => {
         </Box>
 
         {/* Contact / Input Section */}
-        <div dir={t("dir")}>
+        {/* <div dir={t("dir")}>
           <Box
             component="form"
             onSubmit={onSubmit}
@@ -459,7 +450,7 @@ const Commercial = () => {
               </Button>
             </motion.div>
           </Box>
-        </div>
+        </div> */}
       </div>
     </>
   );

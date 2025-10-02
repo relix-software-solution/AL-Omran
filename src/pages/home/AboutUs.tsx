@@ -74,7 +74,7 @@ const AboutUs = () => {
           }}
         >
           {/* LEFT: Swiper image area */}
-          <Box sx={{ width: { xs: "100%", md: "47%" } }}>
+          <Box sx={{ direction: "rtl", width: { xs: "100%", md: "44.6%" } }}>
             <motion.div
               initial={{
                 opacity: 0,
@@ -241,7 +241,7 @@ const AboutUs = () => {
             >
               {t("vision")}
             </Typography>{" "}
-            {t("vision1")}
+            <Typography> {t("vision1")}</Typography>
           </Box>
 
           <Box
@@ -262,7 +262,7 @@ const AboutUs = () => {
             >
               {t("mission")}
             </Typography>{" "}
-            {t("mission1")}
+            <Typography> {t("mission1")}</Typography>
           </Box>
         </Box>{" "}
       </motion.div>
