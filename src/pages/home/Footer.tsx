@@ -297,7 +297,7 @@ const Footer = () => {
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                 >
-                  <Link to="https://forms.zohopublic.com/mnmahlihe1/form/NewCustomerRegistrationForm/formperma/1aGLJO8dwySNo9dHefYpcykT5TTs3-gPEL4UsmX9JLA">
+                  <Link to="/register">
                     <Box
                       component="img"
                       src={QR}
@@ -326,7 +326,7 @@ const Footer = () => {
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                 >
-                  <Link to="https://forms.zohopublic.com/mnmahlihe1/form/NewCustomerRegistrationForm/formperma/1aGLJO8dwySNo9dHefYpcykT5TTs3-gPEL4UsmX9JLA">
+                  <Link to="register">
                     <Box
                       sx={{
                         width: "100%",
