@@ -147,7 +147,7 @@ const Landing = () => {
             position: "relative",
             zIndex: 2,
             px: { xs: 2, sm: 4, md: 8 },
-            pb: { xs: 4, sm: 6, md: 16 },
+            pb: { xs: 4, sm: 6 },
             maxWidth: "800px",
           }}
         >
@@ -196,7 +196,7 @@ const Landing = () => {
             }}
             viewport={{ once: false, amount: 0.5 }}
           >
-            <Link to="/destinations#res">
+            <Link to="/residential">
               <Button
                 sx={{
                   width: { xs: "140px", md: "200px" },
@@ -210,7 +210,7 @@ const Landing = () => {
                 {t("dest5")}
               </Button>
             </Link>
-            <Link to="/destinations#comm">
+            <Link to="/commercial">
               <Button
                 sx={{
                   width: { xs: "140px", md: "200px" },

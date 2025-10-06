@@ -110,7 +110,7 @@ const Footer = () => {
                   </a>
 
                   <a
-                    href="https://www.linkedin.com/in/alomran-salam-66b997379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    href="https://www.linkedin.com/in/alomran-real-estate-b4527a379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -297,7 +297,7 @@ const Footer = () => {
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                 >
-                  <Link to="/register">
+                  <Link to="/register#reg">
                     <Box
                       component="img"
                       src={QR}
@@ -326,7 +326,7 @@ const Footer = () => {
                   }}
                   viewport={{ once: false, amount: 0.5 }}
                 >
-                  <Link to="register">
+                  <Link to="/register#reg">
                     <Box
                       sx={{
                         width: "100%",

@@ -1,252 +1,292 @@
+// أعلى الملف: استيراداتك …
 import {
   Box,
-  Button,
-  InputAdornment,
-  TextField,
   Typography,
+  useMediaQuery,
+  CircularProgress,
+  IconButton,
 } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import type { FormEvent } from "react";
-import Swal from "sweetalert2";
+import theme from "../../theme";
+import promoVideo from "../../assets/promo.mp4";
+import posterImg from "../../assets/poster.png";
+import { useEffect, useRef, useState } from "react";
 
-const textFieldSx = {
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "#1D1B56",
-      borderRadius: "16px",
-    },
-    "&:hover fieldset": {
-      borderColor: "#1D1B56",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#1D1B56",
-    },
-    "& input": {
-      color: "#1D1B56",
-    },
-    "& input::placeholder": {
-      color: "#666",
-      opacity: 1,
-    },
-  },
-  "& .MuiInputLabel-root": {
-    color: "#1D1B56",
-  },
-  "& .MuiInputLabel-root.Mui-focused": {
-    color: "#1D1B56",
-  },
-};
+const DEV_FORCE_DELAY_MS = 3000;
 
 const Residential = () => {
-  /* -------------------------------------------------------------------------- */
-  /*                                 Translation                                */
-  /* -------------------------------------------------------------------------- */
   const [t, i18n] = useTranslation();
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
-    formData.append("access_key", "d6ec67ab-7c56-428a-b250-0f3d36627fec");
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // حالة الصوت
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            if (DEV_FORCE_DELAY_MS && DEV_FORCE_DELAY_MS > 0) {
+              setShouldLoad(true);
+              setTimeout(() => {
+                const v = videoRef.current;
+                if (v && !v.src) {
+                  v.src = promoVideo as unknown as string;
+                  v.load();
+                }
+              }, DEV_FORCE_DELAY_MS);
+            } else {
+              setShouldLoad(true);
+            }
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
-    const data = await response.json();
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
 
-    if (data.success && i18n.language === "en") {
-      Swal.fire({
-        title: "Done!",
-        text: "Your message has been sended",
-        icon: "success",
-      });
-      // setResult("Form Submitted Successfully");
-      event.currentTarget.reset();
-    } else {
-      console.log("Error", data);
-      // setResult(data.message);
-    }
-    if (data.success && i18n.language === "ar") {
-      Swal.fire({
-        title: "تم الإرسال",
-        text: "لقد تم إرسال رسالتك بنجاح",
-        icon: "success",
-      });
-      // setResult("Form Submitted Successfully");
-      event.currentTarget.reset();
-    } else {
-      console.log("Error", data);
-      // setResult(data.message);
+    const onCanPlay = () => setIsReady(true);
+    const onPlaying = () => {
+      setIsPlaying(true);
+      setIsReady(true);
+    };
+    const onPause = () => setIsPlaying(false);
+    const onError = () => {
+      setIsReady(false);
+      console.error("Video load error");
+    };
+
+    v.addEventListener("canplay", onCanPlay);
+    v.addEventListener("playing", onPlaying);
+    v.addEventListener("pause", onPause);
+    v.addEventListener("error", onError);
+
+    return () => {
+      v.removeEventListener("canplay", onCanPlay);
+      v.removeEventListener("playing", onPlaying);
+      v.removeEventListener("pause", onPause);
+      v.removeEventListener("error", onError);
+    };
+  }, [shouldLoad]);
+
+  const handleManualPlay = async () => {
+    const v = videoRef.current;
+    if (!v) return;
+    try {
+      if (v.paused) {
+        await v.play();
+        setIsPlaying(true);
+      } else {
+        v.pause();
+        setIsPlaying(false);
+      }
+    } catch (e) {
+      console.warn("Playback blocked:", e);
     }
   };
 
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
+  };
+
   return (
-    <>
-      <div dir={t("dir")} id="res">
-        <Box
-          component="form"
-          onSubmit={onSubmit}
-          sx={{ width: "90%", margin: "50px auto", textAlign: "center" }}
-        >
+    <div dir={t("dir")}>
+      <Box
+        sx={{
+          width: "90%",
+          display: { xs: "block", md: "flex" },
+          margin: "100px auto",
+          justifyContent: "space-between",
+          position: "relative",
+        }}
+      >
+        <Box sx={{ direction: "rtl", width: { xs: "100%", md: "44.6%" } }}>
           <motion.div
             initial={{
               opacity: 0,
-              y: 50,
+              x: isMdUp ? (i18n.language === "ar" ? 50 : -50) : 0,
+              y: isMdUp ? 0 : 50,
             }}
             whileInView={{
               opacity: 1,
+              x: 0,
               y: 0,
-              transition: {
-                delay: 0.2,
-                duration: 0.8,
-                ease: [0.75, 0.01, 0.31, 1],
-              },
-            }}
-            viewport={{ once: false, amount: 0.5 }}
-          >
-            <Typography
-              variant="h2"
-              gutterBottom
-              sx={{
-                textAlign: "center",
-                mb: 5,
-                color: "#1D1B56",
-                fontSize: { xs: "32px", md: "72px" },
-              }}
-            >
-              {t("dest7")}
-            </Typography>
-          </motion.div>
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: 0.5,
-                duration: 0.8,
-                ease: [0.75, 0.01, 0.31, 1],
-              },
-            }}
-            viewport={{ once: false, amount: 0.5 }}
-          >
-            <Typography
-              variant="h4"
-              gutterBottom
-              sx={{
-                textAlign: "center",
-                mb: 5,
-                color: "#1D1B56",
-                fontSize: { xs: "20px", md: "30px" },
-              }}
-            >
-              - {t("dest8")} -
-            </Typography>
-          </motion.div>
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: 0.8,
-                duration: 0.8,
-                ease: [0.75, 0.01, 0.31, 1],
-              },
+              transition: { delay: 0.2, duration: 0.8 },
             }}
             viewport={{ once: false, amount: 0.5 }}
           >
             <Box
-              sx={{ width: { xs: "100%", md: "60%" }, margin: "0 auto 30px" }}
-            >
-              <TextField
-                label={t("contact13")}
-                placeholder={t("contact14")}
-                name="name"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircleIcon sx={{ color: "#1D1B56" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={textFieldSx}
-              />
-            </Box>
-            <Box
+              ref={wrapperRef}
               sx={{
-                width: { xs: "100%", md: "60%" },
-                margin: "auto",
-                display: { xs: "block", md: "flex" },
-                justifyContent: "space-between",
+                width: "100%",
+                height: { xs: 200, md: 350 },
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: 1,
+                backgroundColor: "#000",
               }}
             >
-              <Box
-                sx={{
-                  width: { xs: "100%", md: "48%" },
-                  marginBottom: { xs: "30px", md: "0" },
+              {!shouldLoad && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    inset: 0,
+                    backgroundImage: `url(${posterImg})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+              )}
+
+              <video
+                ref={videoRef}
+                poster={posterImg}
+                playsInline
+                muted={isMuted}
+                loop
+                autoPlay
+                preload="metadata"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
                 }}
               >
-                <TextField
-                  label={t("contact15")}
-                  placeholder={t("contact16")}
-                  name="message"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#1D1B56" }} />
-                      </InputAdornment>
-                    ),
+                متصفحك لا يدعم عنصر الفيديو.
+              </video>
+
+              {!isReady && shouldLoad && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    inset: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35))",
                   }}
-                  sx={textFieldSx}
-                />
-              </Box>
-              <Box sx={{ width: { xs: "100%", md: "48%" } }}>
-                <TextField
-                  label={t("contact8")}
-                  placeholder={t("contact9")}
-                  name="email"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon sx={{ color: "#1D1B56" }} />
-                      </InputAdornment>
-                    ),
+                >
+                  <CircularProgress />
+                </Box>
+              )}
+
+              {/* زر التشغيل/الإيقاف + زر الصوت */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 8,
+                  right: 8,
+                  display: "flex",
+                  gap: 1,
+                }}
+              >
+                <IconButton
+                  aria-label="Play/Pause video"
+                  onClick={handleManualPlay}
+                  sx={{
+                    bgcolor: "rgba(255,255,255,0.85)",
+                    "&:hover": { bgcolor: "rgba(255,255,255,0.95)" },
                   }}
-                  sx={textFieldSx}
-                />
+                  size="small"
+                >
+                  {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+                </IconButton>
+
+                <IconButton
+                  aria-label="Mute/Unmute video"
+                  onClick={toggleMute}
+                  sx={{
+                    bgcolor: "rgba(255,255,255,0.85)",
+                    "&:hover": { bgcolor: "rgba(255,255,255,0.95)" },
+                  }}
+                  size="small"
+                >
+                  {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+                </IconButton>
               </Box>
             </Box>
-            <Button
-              type="submit"
-              sx={{
-                width: { xs: "140px", md: "200px" },
-                padding: "10px 20px",
-                fontSize: "16px",
-                background: "#BCA966",
-                color: "#fff",
-                borderRadius: "40px",
-                margin: "30px auto 10px",
-                "&:hover": {
-                  backgroundColor: "#BCA966C9",
-                },
-              }}
-            >
-              {t("contact12")}
-            </Button>
           </motion.div>
         </Box>
-      </div>
-    </>
+
+        {/* الجانب الأيمن كما عندك */}
+        <Box sx={{ width: { xs: "100%", md: "45%" }, alignContent: "center" }}>
+          <Box sx={{ color: "193a51", width: "90%", marginBottom: "20px" }}>
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: isMdUp ? (i18n.language === "ar" ? -50 : 50) : 0,
+                y: isMdUp ? 0 : 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: { delay: 0.2, duration: 0.8 },
+              }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              <Typography
+                component="h1"
+                sx={{ fontSize: "36px", color: "#1D1B56" }}
+              >
+                {t("dest1")}
+              </Typography>
+              <Typography
+                component="h1"
+                sx={{ fontSize: "24px", color: "#1D1B56" }}
+              >
+                {t("dest2")}
+              </Typography>
+              <Typography
+                component="h1"
+                sx={{
+                  padding: "30px 0",
+                  fontSize: "16px",
+                  color: "#1D1B56",
+                }}
+              >
+                {t("dest15")}
+              </Typography>
+              <Typography
+                component="h1"
+                sx={{
+                  marginTop: "20px",
+                  fontSize: "16px",
+                  color: "#1D1B56",
+                  textAlign: "end",
+                }}
+              >
+                {t("about1")}
+              </Typography>
+            </motion.div>
+          </Box>
+        </Box>
+      </Box>
+    </div>
   );
 };
 
