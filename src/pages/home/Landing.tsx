@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
 import { Button } from "@mui/material";
+import { Link } from "react-router";
 
 const Landing = () => {
   const [t, i18n] = useTranslation();
@@ -67,24 +68,26 @@ const Landing = () => {
           zIndex: 2,
         }}
       >
-        <Button
-          variant="outlined"
-          color="primary"
-          sx={{
-            color: "#fff",
-            borderColor: "#BCA966",
-            backgroundColor: "#BCA966",
-            px: 6,
-            py: 1.2,
-            fontSize: "16px",
-            borderRadius: "50px",
-            "&:hover": {
-              backgroundColor: "#BCA966C9",
-            },
-          }}
-        >
-          {i18n.language === "ar" ? "سجل اهتمامك" : "Register now"}
-        </Button>
+        <Link to="/register#reg">
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{
+              color: "#fff",
+              borderColor: "#BCA966",
+              backgroundColor: "#BCA966",
+              px: 6,
+              py: 1.2,
+              fontSize: "16px",
+              borderRadius: "50px",
+              "&:hover": {
+                backgroundColor: "#BCA966C9",
+              },
+            }}
+          >
+            {i18n.language === "ar" ? "سجل اهتمامك" : "Register now"}
+          </Button>
+        </Link>
       </Box>
     </div>
   );
