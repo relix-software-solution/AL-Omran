@@ -3,9 +3,10 @@ import landingPoster from "../../assets/image/Landing.webp";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
+import { Button } from "@mui/material";
 
 const Landing = () => {
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
 
   const { ref } = useInView({
     triggerOnce: false,
@@ -56,6 +57,34 @@ const Landing = () => {
             zIndex: 1,
           }}
         />
+      </Box>
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "5%",
+          left: i18n.language === "ar" ? "5%" : "auto",
+          right: i18n.language === "en" ? "5%" : "auto",
+          zIndex: 2,
+        }}
+      >
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{
+            color: "#fff",
+            borderColor: "#BCA966",
+            backgroundColor: "#BCA966",
+            px: 6,
+            py: 1.2,
+            fontSize: "16px",
+            borderRadius: "50px",
+            "&:hover": {
+              backgroundColor: "#BCA966C9",
+            },
+          }}
+        >
+          {i18n.language === "ar" ? "سجل اهتمامك" : "Register now"}
+        </Button>
       </Box>
     </div>
   );
