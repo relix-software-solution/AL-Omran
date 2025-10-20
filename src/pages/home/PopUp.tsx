@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
-import {
-  Dialog,
-  DialogActions,
-  Button,
-  Typography,
-  IconButton,
-  Box,
-} from "@mui/material";
+import { Dialog, Typography, IconButton, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useLocation } from "react-router-dom";
-import { HashLink as Link } from "react-router-hash-link";
 import { useTranslation } from "react-i18next";
 
 // استيراد الصورة من مجلد assets
 import popupBg from "../../assets/image/popupBg.webp"; // عدّل المسار واسم الصورة
 
 const PopUp = () => {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -87,35 +79,6 @@ const PopUp = () => {
           {t("popup")}
         </Typography>
       </Box>
-
-      {/* الزر في الأسفل */}
-      <DialogActions
-        sx={{
-          justifyContent: "center",
-          mb: 2,
-        }}
-      >
-        <Link to="/register#reg">
-          <Button
-            variant="outlined"
-            color="primary"
-            sx={{
-              color: "#fff",
-              borderColor: "#BCA966",
-              backgroundColor: "#BCA966",
-              px: 6,
-              py: 1.2,
-              fontSize: "16px",
-              borderRadius: "50px",
-              "&:hover": {
-                backgroundColor: "#BCA966C9",
-              },
-            }}
-          >
-            {i18n.language === "ar" ? "سجل اهتمامك" : "Register now"}
-          </Button>
-        </Link>
-      </DialogActions>
     </Dialog>
   );
 };
