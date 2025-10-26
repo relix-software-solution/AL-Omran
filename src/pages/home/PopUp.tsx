@@ -31,15 +31,19 @@ const PopUp = () => {
       fullWidth
       PaperProps={{
         style: {
-          maxWidth: "400px",
-          height: "250px",
+          width: "250px",
+          height: "120px",
           backgroundImage: `url(${popupBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           padding: "20px",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-          position: "relative",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+          position: "fixed",
+          bottom: "40px",
+          right: "4%",
+          margin: 0,
+          borderRadius: "0px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -74,7 +78,7 @@ const PopUp = () => {
       >
         <Typography
           variant="h6"
-          sx={{ fontWeight: 500, fontSize: { xs: "20px", md: "24px" } }}
+          sx={{ fontWeight: 500, fontSize: { xs: "14px", md: "16px" } }}
         >
           {t("popup")}
         </Typography>
