@@ -67,18 +67,29 @@ const PopUp = () => {
       {/* النص في المنتصف */}
       <Box
         sx={{
-          textAlign: "center",
+          alignContent: "center",
+          textAlign: "end",
           color: "#fff",
           flexGrow: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          px: 2,
         }}
       >
         <Typography
           variant="h6"
-          sx={{ fontWeight: 500, fontSize: { xs: "14px", md: "16px" } }}
+          sx={{
+            marginTop: "5px",
+            fontWeight: 500,
+            fontSize: { xs: "14px", md: "16px" },
+          }}
+        >
+          {t("popup1")}
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            marginTop: "5px",
+            fontWeight: 500,
+            fontSize: { xs: "14px", md: "16px" },
+          }}
         >
           {t("popup")}
         </Typography>
