@@ -5,7 +5,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
-import logo1 from "../../assets/logo1.webp";
+import logo1 from "../../assets/logo.webp";
 import QR from "../../assets/image/QR.jpg";
 
 const Footer = () => {

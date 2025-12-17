@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import logo from "../../assets/alnaserLogo1.png"; // عدّل المسار حسب مكان اللوجو
+import logo from "../../assets/alnaserLogo.png"; // عدّل المسار حسب مكان اللوجو
 import videoBg from "../../assets/3.mp4"; // عدّل المسار للفيديو
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
