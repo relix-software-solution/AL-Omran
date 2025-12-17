@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import landingPoster from "../../assets/image/Landing.webp";
+import landingPoster from "../../assets/image/Landing.webp1";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
