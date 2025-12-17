@@ -10,8 +10,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import aboutImage from "../../assets/image/aboutUs.webp";
-import aboutImage2 from "../../assets/image/aboutUs1.jpg";
 
 const AboutUs = () => {
   /* -------------------------------------------------------------------------- */
@@ -119,7 +117,7 @@ const AboutUs = () => {
                   <SwiperSlide>
                     <Box
                       component="img"
-                      src={aboutImage}
+                      src="/image/aboutUs.webp"
                       alt="About Us"
                       sx={{
                         width: "100%",
@@ -134,7 +132,7 @@ const AboutUs = () => {
                   <SwiperSlide>
                     <Box
                       component="img"
-                      src={aboutImage2}
+                      src="/image/aboutUs1.jpg"
                       alt="About Us 2"
                       sx={{
                         width: "100%",

@@ -13,7 +13,6 @@ import {
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Swal from "sweetalert2";
 import EmailIcon from "@mui/icons-material/Email";
-import image1 from "../../assets/image/05.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 
@@ -89,7 +88,7 @@ const Contact: React.FC = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: `url(${image1})`,
+            backgroundImage: `url("/image/05.webp"})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: 1,

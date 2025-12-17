@@ -2,9 +2,6 @@ import { HashLink as Link } from "react-router-hash-link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
-import image1 from "../../assets/image/1.webp";
-import image2 from "../../assets/image/2.webp";
-import image3 from "../../assets/image/3.webp";
 import Button from "@mui/material/Button";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
@@ -15,7 +12,7 @@ import { motion } from "motion/react";
 const images = [
   {
     type: "image",
-    src: image1,
+    src: "/image/1.webp",
     label:
       "As architects and urban planners engaged in the reconstruction of the city of Homs, we are fully aware of the profound responsibility of shaping spaces that not only restore the physical fabric of the city...",
     labelAr:
@@ -23,14 +20,14 @@ const images = [
   },
   {
     type: "image",
-    src: image2,
+    src: "/image/2.webp",
     label:
       "It includes more than 4,000 residential units and provides over 10,000 job opportunities.",
     labelAr: "يضم أكثر من 4000 وحدة سكنية ويوفر أكثر من 10000 فرصة عمل.",
   },
   {
     type: "image",
-    src: image3,
+    src: "/image/3.webp",
     label: "The project spans a total area of 688,500 square meters",
     labelAr: "يبلغ إجمالي مساحة المشروع 688,500 متر مربع",
   },

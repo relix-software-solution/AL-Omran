@@ -9,13 +9,6 @@ import {
 import { useState, type FormEvent } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import video1 from "../../assets/3.mp4";
-import videoPoster from "../../assets/image/05.webp"; // استورد صورة البوستر المناسبة للفيديو
-import image2 from "../../assets/image/8.webp";
-import image3 from "../../assets/image/9.webp";
-import image4 from "../../assets/image/2.webp";
-import image5 from "../../assets/image/3.webp";
-import image6 from "../../assets/image/6.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import Swal from "sweetalert2";
@@ -51,28 +44,28 @@ const textFieldSx = {
 const images = [
   {
     type: "video",
-    src: video1,
-    poster: videoPoster, // إضافة بوستر الفيديو هنا
+    src: "/3.mp4",
+    poster: "/image/05.webp", // إضافة بوستر الفيديو هنا
   },
   {
     type: "image",
-    src: image2,
+    src: "/image/8.webp",
   },
   {
     type: "image",
-    src: image3,
+    src: "/image/9.webp",
   },
   {
     type: "image",
-    src: image4,
+    src: "/image/4.webp",
   },
   {
     type: "image",
-    src: image5,
+    src: "/image/7.webp",
   },
   {
     type: "image",
-    src: image6,
+    src: "/image/6.webp",
   },
 ];
 

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import logo1 from "../assets/logo1.webp";
 import gsap from "gsap";
 import { Box } from "@mui/material";
 
@@ -63,7 +62,7 @@ const Preloader = () => {
       }}
     >
       <div ref={textRef} style={{ display: "flex", gap: "6px" }}>
-        <Box component="img" src={logo1} sx={{ width: "300px" }} />
+        <Box component="img" src="/logo1.webp" sx={{ width: "300px" }} />
       </div>
     </div>
   );

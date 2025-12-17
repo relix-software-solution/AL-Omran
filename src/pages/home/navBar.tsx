@@ -16,7 +16,6 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import logo from "../../assets/logo1.webp";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -117,7 +116,7 @@ export default function AppAppBar() {
                 <Box>
                   <Box
                     component="img"
-                    src={logo}
+                    src="/logo1.webp"
                     sx={{
                       width: "90px",
                       padding: "10px 30px",

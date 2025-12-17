@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import landingPoster from "../../assets/image/Landing.webp";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { TabTitle } from "../../components/Title";
@@ -35,7 +34,7 @@ const Landing = () => {
       >
         <Box
           component="img"
-          src={landingPoster}
+          src="/image/Landing.webp"
           alt="Landing"
           sx={{
             position: "absolute",

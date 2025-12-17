@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // استيراد الصورة من مجلد assets
-import popupBg from "../../assets/image/popupBg.webp"; // عدّل المسار واسم الصورة
 
 const PopUp = () => {
   const [t] = useTranslation();
@@ -33,7 +32,7 @@ const PopUp = () => {
         style: {
           width: "250px",
           height: "120px",
-          backgroundImage: `url(${popupBg})`,
+          backgroundImage: `url(${"/image/popupBg.webp"})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

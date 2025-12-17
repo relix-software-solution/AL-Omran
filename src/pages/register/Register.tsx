@@ -1,7 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import logo from "../../assets/alnaserLogo.png"; // عدّل المسار حسب مكان اللوجو
-import videoBg from "../../assets/3.mp4"; // عدّل المسار للفيديو
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import Footer from "../home/Footer";
@@ -23,7 +21,7 @@ const Register = () => {
         {/* خلفية الفيديو */}
         <Box
           component="video"
-          src={videoBg}
+          src="/3.mp4"
           autoPlay
           loop
           muted
@@ -56,7 +54,7 @@ const Register = () => {
           {/* اللوجو */}
           <Box sx={{ width: { xs: "300px", md: "450px" }, maxWidth: "80%" }}>
             <motion.img
-              src={logo}
+              src="/alnaserLogo.png"
               alt="Victory Boulevard"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}

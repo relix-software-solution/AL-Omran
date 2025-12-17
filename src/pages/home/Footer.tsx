@@ -5,8 +5,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useTranslation } from "react-i18next";
 import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "motion/react";
-import logo1 from "../../assets/logo.webp";
-import QR from "../../assets/image/QR.jpg";
 
 const Footer = () => {
   /* -------------------------------------------------------------------------- */
@@ -50,7 +48,7 @@ const Footer = () => {
               >
                 <Box
                   component="img"
-                  src={logo1}
+                  src="/logo.webp"
                   sx={{ width: "300px", margin: "auto" }}
                 />
                 <Typography
@@ -300,7 +298,7 @@ const Footer = () => {
                   <Link to="/register#reg">
                     <Box
                       component="img"
-                      src={QR}
+                      src="/image/QR.jpg"
                       sx={{
                         width: "80%",
                         padding: { xs: "20px 0", md: "20px" },
