@@ -10,8 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import aboutImage from "../../assets/image/aboutUs.webp";
-import aboutImage2 from "../../assets/image/aboutUs1.jpg";
+import aboutImage from "../../assets/image/aboutUs1.webp";
+import aboutImage2 from "../../assets/image/aboutUs11.jpg";
 
 const AboutUs = () => {
   /* -------------------------------------------------------------------------- */

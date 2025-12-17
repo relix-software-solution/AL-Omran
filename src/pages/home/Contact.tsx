@@ -13,7 +13,7 @@ import {
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Swal from "sweetalert2";
 import EmailIcon from "@mui/icons-material/Email";
-import image1 from "../../assets/image/05.webp";
+import image1 from "../../assets/image/051.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 

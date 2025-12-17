@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import backgroundLanding from "../../assets/image/12.webp";
+import backgroundLanding from "../../assets/image/121.webp";
 import { useTranslation } from "react-i18next";
 import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { HashLink as Link } from "react-router-hash-link";

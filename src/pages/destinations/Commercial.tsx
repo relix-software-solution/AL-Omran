@@ -10,12 +10,12 @@ import { useState, type FormEvent } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import video1 from "../../assets/3.mp4";
-import videoPoster from "../../assets/image/05.webp"; // استورد صورة البوستر المناسبة للفيديو
-import image2 from "../../assets/image/8.webp";
-import image3 from "../../assets/image/9.webp";
-import image4 from "../../assets/image/2.webp";
-import image5 from "../../assets/image/3.webp";
-import image6 from "../../assets/image/6.webp";
+import videoPoster from "../../assets/image/051.webp"; // استورد صورة البوستر المناسبة للفيديو
+import image2 from "../../assets/image/81.webp";
+import image3 from "../../assets/image/91.webp";
+import image4 from "../../assets/image/21.webp";
+import image5 from "../../assets/image/31.webp";
+import image6 from "../../assets/image/61.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import Swal from "sweetalert2";
